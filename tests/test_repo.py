@@ -208,5 +208,74 @@ class TestChapter7(unittest.TestCase):
         self.assertIn("against the truth", done.stdout)
 
 
+class TestChapter6(unittest.TestCase):
+    FOLDER = os.path.join(LABS, "ch06_protocol_first")
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory(prefix="ai-health-data-")
+        out = os.path.join(cls.tmp.name, "ch06_python.csv")
+        done = subprocess.run([sys.executable, os.path.join(cls.FOLDER, "lab.py"), out],
+                              capture_output=True, text=True, cwd=ROOT)
+        assert done.returncode == 0, done.stderr
+        with open(out, encoding="utf-8", newline="") as fh:
+            cls.results = dict(list(csv.reader(fh))[1:])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def by_hand(self):
+        with open(os.path.join(self.FOLDER, "by_hand.csv"), encoding="utf-8", newline="") as fh:
+            return list(csv.DictReader(fh))
+
+    def test_by_hand_extract_is_real_data(self):
+        rows = self.by_hand()
+        self.assertEqual(len(rows), 20)
+        ix = common.read("data/deterioration/index_encounters.csv").set_index("encounter_id")
+        for row in rows:
+            for column in ("facility_id", "index_datetime", "vdi_shown", "ehr_outcome_48h"):
+                self.assertEqual(ix.loc[row["encounter_id"], column], row[column])
+
+    def test_by_hand_classification(self):
+        """The pencil exercise in the lab's README: 9 of the 20 encounters are in the cohort.
+        The 11 that are out all fall after the window; 5 of them were still silent, 6 had the
+        score shown, 2 of those at F06, and 1 has no recorded outcome."""
+        rows = self.by_hand()
+        late = [r for r in rows if not "2023-07-01" <= r["index_datetime"][:10] <= "2023-12-31"]
+        inside = [r for r in rows if r not in late and r["facility_id"] != "F06"
+                  and r["vdi_shown"] == "0" and r["ehr_outcome_48h"] != ""]
+        self.assertEqual((len(inside), len(late)), (9, 11))
+        self.assertEqual(sum(r["vdi_shown"] == "0" for r in late), 5)
+        self.assertEqual(sum(r["vdi_shown"] == "1" for r in late), 6)
+        self.assertEqual(sum(r["facility_id"] == "F06" for r in late), 2)
+        self.assertEqual(sum(r["ehr_outcome_48h"] == "" for r in late), 1)
+
+    def test_the_lab_agrees_with_the_frozen_checks_and_with_chapter_7(self):
+        """CHECKS.md row T15 gives the cohort's size and events, and T16 its C-statistic."""
+        rows = {}
+        with open(os.path.join(ROOT, "CHECKS.md"), encoding="utf-8") as fh:
+            for line in fh:
+                cells = [c.strip() for c in line.split("|")]
+                if len(cells) > 3 and re.match(r"T1[56] ", cells[1]):
+                    rows[cells[1].split(" ")[0]] = cells[2]
+        r = self.results
+        self.assertEqual((r["n.ch06.cohort"], r["n.ch06.cohort_events"]), ("12030", "443"))
+        self.assertIn("(443 flagged of 12,030)", rows["T15"])
+        self.assertTrue(rows["T16"].startswith(f"{float(r['stat.ch06.protocol_c_statistic']):.4f};"), rows["T16"])
+        hospitals = sum(int(r[f"n.ch06.f0{k}_encounters"]) for k in range(1, 6))
+        months = sum(int(r[f"n.ch06.m2023_{m:02d}_encounters"]) for m in range(7, 13))
+        self.assertEqual((hospitals, months), (12030, 12030))
+        self.assertEqual(int(r["n.ch06.silent_as_run_encounters"]),
+                         12030 + int(r["n.ch06.silent_after_window_encounters"]))
+
+    def test_the_answer_key_runs(self):
+        done = subprocess.run([sys.executable, os.path.join(self.FOLDER, "answer_key.py")],
+                              capture_output=True, text=True, cwd=ROOT)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("events prevented: 44", done.stdout)
+        self.assertIn("the same outcome either way for 12,030 of 12,030 encounters", done.stdout)
+
+
 if __name__ == "__main__":
     unittest.main()
