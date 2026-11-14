@@ -1,0 +1,46 @@
+{
+  "abbreviation": "VDI",
+  "alert_threshold": 60,
+  "claimed_performance": {
+    "basis": "The vendor's own multi-site data, split-sample validation",
+    "c_statistic": 0.84
+  },
+  "development_population": {
+    "description": "Adult ward admissions at 14 hospitals in the vendor's development network",
+    "encounters": 412000,
+    "event_rate": 0.045,
+    "years": "2018 to 2021"
+  },
+  "fictional": "Venncroft and the Venncroft Deterioration Index are invented for the Tonmick Health practice world. Nothing here describes a real vendor, product or study.",
+  "formula": "Proprietary. Not disclosed to customers.",
+  "inputs": [
+    "Heart rate",
+    "Respiratory rate",
+    "Systolic blood pressure",
+    "Temperature",
+    "Oxygen saturation by pulse oximeter",
+    "Oxygen support",
+    "Alertness category",
+    "Latest lactate (a normal value is assumed when none is on file)",
+    "Age",
+    "Encounters at the customer's organisation in the last 12 months"
+  ],
+  "intended_use": "Adults admitted to a general ward. One score 12 hours after admission. Not for patients in intensive care or on comfort care at that time.",
+  "outcome_predicted": "Unplanned transfer to intensive care, unplanned transfer to a higher level of care, or death, within 48 hours of the score.",
+  "performance_by_subgroup": "Not reported",
+  "product": "Venncroft Deterioration Index",
+  "score": "0 to 100; a higher score means a higher risk. vendor_risk_table.csv gives the vendor's stated risk at each score.",
+  "vendor": "Venncroft",
+  "versions": [
+    {
+      "at_tonmick_from": "2023-07-01",
+      "note": "Scored in silent mode at first; alert dates are in facilities.csv",
+      "version": "2.0"
+    },
+    {
+      "at_tonmick_from": "2026-02-01",
+      "note": "Recalibration on pooled customer data. Inputs and alert threshold are unchanged. The score still runs from 0 to 100; its risk table is new. Customers were told to expect fewer alerts.",
+      "version": "3.0"
+    }
+  ]
+}

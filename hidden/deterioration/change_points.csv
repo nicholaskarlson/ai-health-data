@@ -1,0 +1,14 @@
+change_id,change_date,facilities,mechanism,size,unit,description
+CP01,2023-02-01,F01;F02;F03;F04;F05,r30_worklist_shown,0.0000,log odds of readmission,The R30 score is shown on the discharge-planning worklist. Its true effect on readmission is zero.
+CP02,2023-07-01,F01;F02;F03;F04;F05,silent_scoring_start,0.0000,none,"VDI version 2.0 is scored and stored. Nobody sees it, so it changes nothing."
+CP03,2024-01-15,F01;F02;F03,alerts_live,0.8000,risk ratio after an evaluation,Alerts are shown at a score of 60 or more. An answered alert multiplies the true risk by 0.8.
+CP04,2024-01-15,F01;F02;F03,response_fade_start,-0.0075,"probability an alert is answered, per month",The chance that an alert is answered starts at 0.85 and falls each month since go-live.
+CP05,2024-03-01,F01;F02;F03,lactate_assay_shift,0.4000,mmol/L added to recorded lactate,The central laboratory's new method reads high. True lactate and true risk do not move; scores and alerts rise.
+CP06,2024-04-01,F04;F05,alerts_live,0.8000,risk ratio after an evaluation,Alerts are shown at a score of 60 or more. An answered alert multiplies the true risk by 0.8.
+CP07,2024-04-01,F04;F05,response_fade_start,-0.0075,"probability an alert is answered, per month",The chance that an alert is answered starts at 0.85 and falls each month since go-live.
+CP08,2024-10-01,F06,acquisition,0.2000,"logit of true risk, beside the drawn hospital effect","Sallowfield's admissions enter the data: older patients, more events, and a record of other encounters that starts on this day."
+CP09,2025-01-15,F06,alerts_live_no_silent_period,0.8000,risk ratio after an evaluation,Alerts are shown at a score of 60 or more. An answered alert multiplies the true risk by 0.8. Scoring and alerts start together: no silent period.
+CP10,2025-01-15,F06,response_fade_start,-0.0075,"probability an alert is answered, per month",The chance that an alert is answered starts at 0.85 and falls each month since go-live.
+CP11,2025-09-15,F01;F02;F03,response_floor_reached,0.7000,probability an alert is answered,The chance that an alert is answered reaches its floor of 0.7 and stays there.
+CP12,2025-12-01,F04;F05,response_floor_reached,0.7000,probability an alert is answered,The chance that an alert is answered reaches its floor of 0.7 and stays there.
+CP13,2026-02-01,F01;F02;F03;F04;F05;F06,vdi_version_3,0.7800,slope applied to the version 2.0 risk logit,"Version 3.0: risk logit = -0.76 + 0.78 x the version 2.0 logit, with a new score transform (shift 2.34 in place of 2.63). Fewer alerts at the same threshold."

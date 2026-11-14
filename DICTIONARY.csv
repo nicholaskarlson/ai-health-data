@@ -1,0 +1,483 @@
+file,variable,type_or_range,meaning
+data/network/facilities.csv,facility_id,id; F01-F06,Hospital ID
+data/network/facilities.csv,facility_name,text,Fictional hospital name
+data/network/facilities.csv,facility_type,code; academic|community|critical_access,Type of hospital
+data/network/facilities.csv,area,code; north|central|south,Coarse fictional area
+data/network/facilities.csv,beds,int; > 0,Staffed beds
+data/network/facilities.csv,network_data_from,date; YYYY-MM-DD,First date the hospital's admissions are in network data
+data/network/facilities.csv,vdi_scoring_from,date; YYYY-MM-DD,First date VDI scores were calculated here
+data/network/facilities.csv,vdi_alerts_from,date; YYYY-MM-DD,First date VDI alerts were shown here
+data/network/facilities.csv,central_lab,flag; 0|1,1 = served by the central laboratory
+data/network/timeline.csv,event_date,date; YYYY-MM-DD,Date of the event
+data/network/timeline.csv,event_code,code; short code,Event code
+data/network/timeline.csv,scope,text,Facilities or clinics affected
+data/network/timeline.csv,description,text,"What happened, as the network announced it"
+data/network/lab_change_log.csv,log_id,id; L0001,Change-log entry ID
+data/network/lab_change_log.csv,effective_date,date; YYYY-MM-DD,Date the change took effect
+data/network/lab_change_log.csv,lab_site,code; central|northfen|pellow_lake|sallowfield,Laboratory that made the change
+data/network/lab_change_log.csv,facilities,text; F01;F02,"Hospitals served, separated by semicolons"
+data/network/lab_change_log.csv,test_area,code; chemistry|hematology|coagulation|blood_gas|point_of_care|microbiology|immunoassay|general,Area of testing
+data/network/lab_change_log.csv,change_type,code; reagent_lot|calibration|maintenance|quality_control|software|staffing|reference_interval|method_change,Kind of change
+data/network/lab_change_log.csv,description,text,The entry as the laboratory wrote it
+data/inpatient/persons.csv,person_id,id; P0000001,Person ID
+data/inpatient/persons.csv,sex,code; f|m,Recorded sex
+data/inpatient/persons.csv,birth_year,int; 1915-2008,Year of birth
+data/inpatient/persons.csv,race_ethnicity,code; white|black|hispanic|asian|multiple|mena|aian|nhpi|unknown,"Recorded race and ethnicity, one combined field"
+data/inpatient/persons.csv,interpreter_needed,flag; 0|1,1 = an interpreter is needed
+data/inpatient/persons.csv,home_area,code; north|central|south,Coarse fictional home area
+data/inpatient/admissions_2022.csv,encounter_id,id; E00000001,Encounter (admission) ID
+data/inpatient/admissions_2022.csv,person_id,id; P0000001,Person ID; key to persons.csv
+data/inpatient/admissions_2022.csv,facility_id,id; F01-F06,Admitting hospital
+data/inpatient/admissions_2022.csv,admit_datetime,datetime; YYYY-MM-DDTHH:00,Admission date and hour
+data/inpatient/admissions_2022.csv,discharge_date,date; YYYY-MM-DD,Discharge or death date; empty if still in hospital when the data end
+data/inpatient/admissions_2022.csv,los_days,"float, 1 decimal; >= 0.1",Length of stay in days; empty if still in hospital
+data/inpatient/admissions_2022.csv,age,int; 18-105,Age in years at admission
+data/inpatient/admissions_2022.csv,payer,code; medicare|medicaid|commercial|self_pay,Payer at admission
+data/inpatient/admissions_2022.csv,admission_type,code; emergency|elective,Emergency or elective admission
+data/inpatient/admissions_2022.csv,service,code; medicine|surgery,Admitting service
+data/inpatient/admissions_2022.csv,dx_group,code; sepsis|heart_failure|copd|pneumonia|gi|renal|stroke|cancer|other_cardiac|diabetes|ortho_surgical|other,Invented principal diagnosis group
+data/inpatient/admissions_2022.csv,comorbidity_count,int; 0-12,Invented count of chronic-condition flags
+data/inpatient/admissions_2022.csv,prior_admits_12m,int; >= 0,"Network admissions in the 12 months before this one, as the network's record sees them"
+data/inpatient/admissions_2022.csv,planned_admission,flag; 0|1,"1 = a planned return, scheduled at an earlier discharge"
+data/inpatient/admissions_2022.csv,sodium,"float, 0 decimals; mmol/L","Admission sodium, as recorded; empty if not measured"
+data/inpatient/admissions_2022.csv,creatinine,"float, 2 decimals; mg/dL","Admission creatinine, as recorded; empty if not measured"
+data/inpatient/admissions_2022.csv,hemoglobin,"float, 1 decimal; g/dL","Admission hemoglobin, as recorded; empty if not measured"
+data/inpatient/admissions_2022.csv,wbc,"float, 1 decimal; 10^9/L","Admission white cell count, as recorded; empty if not measured"
+data/inpatient/admissions_2022.csv,lactate,"float, 1 decimal; mmol/L","Admission lactate, as recorded; empty if not drawn"
+data/inpatient/admissions_2022.csv,icu_at_12h,flag; 0|1,1 = in intensive care 12 hours after admission
+data/inpatient/admissions_2022.csv,comfort_care_12h,flag; 0|1,1 = on comfort care 12 hours after admission
+data/inpatient/admissions_2022.csv,disposition,code; home|home_health|snf|hospice|ama|transfer|died,Discharge disposition; empty if still in hospital
+data/inpatient/admissions_2022.csv,died_in_hospital,flag; 0|1,1 = died during this admission
+data/inpatient/admissions_2023.csv,encounter_id,id; E00000001,Encounter (admission) ID
+data/inpatient/admissions_2023.csv,person_id,id; P0000001,Person ID; key to persons.csv
+data/inpatient/admissions_2023.csv,facility_id,id; F01-F06,Admitting hospital
+data/inpatient/admissions_2023.csv,admit_datetime,datetime; YYYY-MM-DDTHH:00,Admission date and hour
+data/inpatient/admissions_2023.csv,discharge_date,date; YYYY-MM-DD,Discharge or death date; empty if still in hospital when the data end
+data/inpatient/admissions_2023.csv,los_days,"float, 1 decimal; >= 0.1",Length of stay in days; empty if still in hospital
+data/inpatient/admissions_2023.csv,age,int; 18-105,Age in years at admission
+data/inpatient/admissions_2023.csv,payer,code; medicare|medicaid|commercial|self_pay,Payer at admission
+data/inpatient/admissions_2023.csv,admission_type,code; emergency|elective,Emergency or elective admission
+data/inpatient/admissions_2023.csv,service,code; medicine|surgery,Admitting service
+data/inpatient/admissions_2023.csv,dx_group,code; sepsis|heart_failure|copd|pneumonia|gi|renal|stroke|cancer|other_cardiac|diabetes|ortho_surgical|other,Invented principal diagnosis group
+data/inpatient/admissions_2023.csv,comorbidity_count,int; 0-12,Invented count of chronic-condition flags
+data/inpatient/admissions_2023.csv,prior_admits_12m,int; >= 0,"Network admissions in the 12 months before this one, as the network's record sees them"
+data/inpatient/admissions_2023.csv,planned_admission,flag; 0|1,"1 = a planned return, scheduled at an earlier discharge"
+data/inpatient/admissions_2023.csv,sodium,"float, 0 decimals; mmol/L","Admission sodium, as recorded; empty if not measured"
+data/inpatient/admissions_2023.csv,creatinine,"float, 2 decimals; mg/dL","Admission creatinine, as recorded; empty if not measured"
+data/inpatient/admissions_2023.csv,hemoglobin,"float, 1 decimal; g/dL","Admission hemoglobin, as recorded; empty if not measured"
+data/inpatient/admissions_2023.csv,wbc,"float, 1 decimal; 10^9/L","Admission white cell count, as recorded; empty if not measured"
+data/inpatient/admissions_2023.csv,lactate,"float, 1 decimal; mmol/L","Admission lactate, as recorded; empty if not drawn"
+data/inpatient/admissions_2023.csv,icu_at_12h,flag; 0|1,1 = in intensive care 12 hours after admission
+data/inpatient/admissions_2023.csv,comfort_care_12h,flag; 0|1,1 = on comfort care 12 hours after admission
+data/inpatient/admissions_2023.csv,disposition,code; home|home_health|snf|hospice|ama|transfer|died,Discharge disposition; empty if still in hospital
+data/inpatient/admissions_2023.csv,died_in_hospital,flag; 0|1,1 = died during this admission
+data/inpatient/admissions_2024.csv,encounter_id,id; E00000001,Encounter (admission) ID
+data/inpatient/admissions_2024.csv,person_id,id; P0000001,Person ID; key to persons.csv
+data/inpatient/admissions_2024.csv,facility_id,id; F01-F06,Admitting hospital
+data/inpatient/admissions_2024.csv,admit_datetime,datetime; YYYY-MM-DDTHH:00,Admission date and hour
+data/inpatient/admissions_2024.csv,discharge_date,date; YYYY-MM-DD,Discharge or death date; empty if still in hospital when the data end
+data/inpatient/admissions_2024.csv,los_days,"float, 1 decimal; >= 0.1",Length of stay in days; empty if still in hospital
+data/inpatient/admissions_2024.csv,age,int; 18-105,Age in years at admission
+data/inpatient/admissions_2024.csv,payer,code; medicare|medicaid|commercial|self_pay,Payer at admission
+data/inpatient/admissions_2024.csv,admission_type,code; emergency|elective,Emergency or elective admission
+data/inpatient/admissions_2024.csv,service,code; medicine|surgery,Admitting service
+data/inpatient/admissions_2024.csv,dx_group,code; sepsis|heart_failure|copd|pneumonia|gi|renal|stroke|cancer|other_cardiac|diabetes|ortho_surgical|other,Invented principal diagnosis group
+data/inpatient/admissions_2024.csv,comorbidity_count,int; 0-12,Invented count of chronic-condition flags
+data/inpatient/admissions_2024.csv,prior_admits_12m,int; >= 0,"Network admissions in the 12 months before this one, as the network's record sees them"
+data/inpatient/admissions_2024.csv,planned_admission,flag; 0|1,"1 = a planned return, scheduled at an earlier discharge"
+data/inpatient/admissions_2024.csv,sodium,"float, 0 decimals; mmol/L","Admission sodium, as recorded; empty if not measured"
+data/inpatient/admissions_2024.csv,creatinine,"float, 2 decimals; mg/dL","Admission creatinine, as recorded; empty if not measured"
+data/inpatient/admissions_2024.csv,hemoglobin,"float, 1 decimal; g/dL","Admission hemoglobin, as recorded; empty if not measured"
+data/inpatient/admissions_2024.csv,wbc,"float, 1 decimal; 10^9/L","Admission white cell count, as recorded; empty if not measured"
+data/inpatient/admissions_2024.csv,lactate,"float, 1 decimal; mmol/L","Admission lactate, as recorded; empty if not drawn"
+data/inpatient/admissions_2024.csv,icu_at_12h,flag; 0|1,1 = in intensive care 12 hours after admission
+data/inpatient/admissions_2024.csv,comfort_care_12h,flag; 0|1,1 = on comfort care 12 hours after admission
+data/inpatient/admissions_2024.csv,disposition,code; home|home_health|snf|hospice|ama|transfer|died,Discharge disposition; empty if still in hospital
+data/inpatient/admissions_2024.csv,died_in_hospital,flag; 0|1,1 = died during this admission
+data/inpatient/admissions_2025.csv,encounter_id,id; E00000001,Encounter (admission) ID
+data/inpatient/admissions_2025.csv,person_id,id; P0000001,Person ID; key to persons.csv
+data/inpatient/admissions_2025.csv,facility_id,id; F01-F06,Admitting hospital
+data/inpatient/admissions_2025.csv,admit_datetime,datetime; YYYY-MM-DDTHH:00,Admission date and hour
+data/inpatient/admissions_2025.csv,discharge_date,date; YYYY-MM-DD,Discharge or death date; empty if still in hospital when the data end
+data/inpatient/admissions_2025.csv,los_days,"float, 1 decimal; >= 0.1",Length of stay in days; empty if still in hospital
+data/inpatient/admissions_2025.csv,age,int; 18-105,Age in years at admission
+data/inpatient/admissions_2025.csv,payer,code; medicare|medicaid|commercial|self_pay,Payer at admission
+data/inpatient/admissions_2025.csv,admission_type,code; emergency|elective,Emergency or elective admission
+data/inpatient/admissions_2025.csv,service,code; medicine|surgery,Admitting service
+data/inpatient/admissions_2025.csv,dx_group,code; sepsis|heart_failure|copd|pneumonia|gi|renal|stroke|cancer|other_cardiac|diabetes|ortho_surgical|other,Invented principal diagnosis group
+data/inpatient/admissions_2025.csv,comorbidity_count,int; 0-12,Invented count of chronic-condition flags
+data/inpatient/admissions_2025.csv,prior_admits_12m,int; >= 0,"Network admissions in the 12 months before this one, as the network's record sees them"
+data/inpatient/admissions_2025.csv,planned_admission,flag; 0|1,"1 = a planned return, scheduled at an earlier discharge"
+data/inpatient/admissions_2025.csv,sodium,"float, 0 decimals; mmol/L","Admission sodium, as recorded; empty if not measured"
+data/inpatient/admissions_2025.csv,creatinine,"float, 2 decimals; mg/dL","Admission creatinine, as recorded; empty if not measured"
+data/inpatient/admissions_2025.csv,hemoglobin,"float, 1 decimal; g/dL","Admission hemoglobin, as recorded; empty if not measured"
+data/inpatient/admissions_2025.csv,wbc,"float, 1 decimal; 10^9/L","Admission white cell count, as recorded; empty if not measured"
+data/inpatient/admissions_2025.csv,lactate,"float, 1 decimal; mmol/L","Admission lactate, as recorded; empty if not drawn"
+data/inpatient/admissions_2025.csv,icu_at_12h,flag; 0|1,1 = in intensive care 12 hours after admission
+data/inpatient/admissions_2025.csv,comfort_care_12h,flag; 0|1,1 = on comfort care 12 hours after admission
+data/inpatient/admissions_2025.csv,disposition,code; home|home_health|snf|hospice|ama|transfer|died,Discharge disposition; empty if still in hospital
+data/inpatient/admissions_2025.csv,died_in_hospital,flag; 0|1,1 = died during this admission
+data/inpatient/admissions_2026.csv,encounter_id,id; E00000001,Encounter (admission) ID
+data/inpatient/admissions_2026.csv,person_id,id; P0000001,Person ID; key to persons.csv
+data/inpatient/admissions_2026.csv,facility_id,id; F01-F06,Admitting hospital
+data/inpatient/admissions_2026.csv,admit_datetime,datetime; YYYY-MM-DDTHH:00,Admission date and hour
+data/inpatient/admissions_2026.csv,discharge_date,date; YYYY-MM-DD,Discharge or death date; empty if still in hospital when the data end
+data/inpatient/admissions_2026.csv,los_days,"float, 1 decimal; >= 0.1",Length of stay in days; empty if still in hospital
+data/inpatient/admissions_2026.csv,age,int; 18-105,Age in years at admission
+data/inpatient/admissions_2026.csv,payer,code; medicare|medicaid|commercial|self_pay,Payer at admission
+data/inpatient/admissions_2026.csv,admission_type,code; emergency|elective,Emergency or elective admission
+data/inpatient/admissions_2026.csv,service,code; medicine|surgery,Admitting service
+data/inpatient/admissions_2026.csv,dx_group,code; sepsis|heart_failure|copd|pneumonia|gi|renal|stroke|cancer|other_cardiac|diabetes|ortho_surgical|other,Invented principal diagnosis group
+data/inpatient/admissions_2026.csv,comorbidity_count,int; 0-12,Invented count of chronic-condition flags
+data/inpatient/admissions_2026.csv,prior_admits_12m,int; >= 0,"Network admissions in the 12 months before this one, as the network's record sees them"
+data/inpatient/admissions_2026.csv,planned_admission,flag; 0|1,"1 = a planned return, scheduled at an earlier discharge"
+data/inpatient/admissions_2026.csv,sodium,"float, 0 decimals; mmol/L","Admission sodium, as recorded; empty if not measured"
+data/inpatient/admissions_2026.csv,creatinine,"float, 2 decimals; mg/dL","Admission creatinine, as recorded; empty if not measured"
+data/inpatient/admissions_2026.csv,hemoglobin,"float, 1 decimal; g/dL","Admission hemoglobin, as recorded; empty if not measured"
+data/inpatient/admissions_2026.csv,wbc,"float, 1 decimal; 10^9/L","Admission white cell count, as recorded; empty if not measured"
+data/inpatient/admissions_2026.csv,lactate,"float, 1 decimal; mmol/L","Admission lactate, as recorded; empty if not drawn"
+data/inpatient/admissions_2026.csv,icu_at_12h,flag; 0|1,1 = in intensive care 12 hours after admission
+data/inpatient/admissions_2026.csv,comfort_care_12h,flag; 0|1,1 = on comfort care 12 hours after admission
+data/inpatient/admissions_2026.csv,disposition,code; home|home_health|snf|hospice|ama|transfer|died,Discharge disposition; empty if still in hospital
+data/inpatient/admissions_2026.csv,died_in_hospital,flag; 0|1,1 = died during this admission
+data/readmission/r30_development_sample.csv,encounter_id,id; E00000001,Index discharge
+data/readmission/r30_development_sample.csv,readmit_30d_observed,flag; 0|1,"Unplanned network readmission within 30 days, as the team recorded it"
+data/readmission/r30_development_sample.csv,age_65_plus,flag; 0|1,Age 65 or over
+data/readmission/r30_development_sample.csv,female,flag; 0|1,Recorded sex female
+data/readmission/r30_development_sample.csv,los_over_5,flag; 0|1,Length of stay over 5 days
+data/readmission/r30_development_sample.csv,prior_admits_cat,int; 0|1|2,"Prior admissions in 12 months: 0, 1, 2 or more"
+data/readmission/r30_development_sample.csv,comorbidity_count,int; 0-12,Comorbidity count
+data/readmission/r30_development_sample.csv,disp_snf,flag; 0|1,Discharged to skilled nursing
+data/readmission/r30_development_sample.csv,disp_home_health,flag; 0|1,Discharged home with home health
+data/readmission/r30_development_sample.csv,medicaid,flag; 0|1,Payer is Medicaid
+data/readmission/r30_development_sample.csv,sodium_low,flag; 0|1,Sodium below 135
+data/readmission/r30_development_sample.csv,hemoglobin_low,flag; 0|1,Hemoglobin below 12
+data/readmission/r30_development_sample.csv,dx_cancer,flag; 0|1,Diagnosis group cancer
+data/readmission/r30_development_sample.csv,dx_heart_failure,flag; 0|1,Diagnosis group heart failure
+data/readmission/r30_development_sample.csv,dx_copd,flag; 0|1,Diagnosis group COPD or respiratory
+data/readmission/r30_development_sample.csv,emergency,flag; 0|1,Emergency admission
+data/readmission/r30_development_sample.csv,weekend_discharge,flag; 0|1,Discharged on a Saturday or Sunday
+data/readmission/r30_development_sample.csv,winter_discharge,flag; 0|1,"Discharged in December, January or February"
+data/readmission/r30_scores.csv,encounter_id,id; E00000001,Index discharge
+data/readmission/r30_scores.csv,score_date,date; YYYY-MM-DD,Date production calculated the score
+data/readmission/r30_scores.csv,r30_risk,"float, 6 decimals; 0-1",Predicted 30-day readmission risk from R30
+data/deterioration/index_encounters.csv,encounter_id,id; E00000001,Encounter ID; key to the admissions files
+data/deterioration/index_encounters.csv,facility_id,id; F01-F06,Hospital
+data/deterioration/index_encounters.csv,index_datetime,datetime; YYYY-MM-DDTHH:00,Index time: 12 hours after admission
+data/deterioration/index_encounters.csv,hr,"float, 0 decimals; beats/min","Heart rate, as recorded"
+data/deterioration/index_encounters.csv,rr,"float, 0 decimals; breaths/min","Respiratory rate, as recorded"
+data/deterioration/index_encounters.csv,sbp,"float, 0 decimals; mmHg","Systolic blood pressure, as recorded"
+data/deterioration/index_encounters.csv,temp_c,"float, 1 decimal; deg C","Temperature, as recorded"
+data/deterioration/index_encounters.csv,spo2,"float, 0 decimals; percent","Oxygen saturation by pulse oximeter, as recorded"
+data/deterioration/index_encounters.csv,o2_support,code; none|low_flow|high_flow,Oxygen support
+data/deterioration/index_encounters.csv,alertness,code; alert|drowsy|confused|unresponsive,Alertness category (invented scale)
+data/deterioration/index_encounters.csv,lactate_at_index,"float, 1 decimal; mmol/L",Latest lactate available at the index time; empty if none
+data/deterioration/index_encounters.csv,network_encounters_12m,int; >= 0,"Network encounters in the last 12 months, as VDI sees them"
+data/deterioration/index_encounters.csv,vdi_score,int; 0-100,Vendor deterioration index
+data/deterioration/index_encounters.csv,vdi_version,code; 2.0|3.0,VDI version in force
+data/deterioration/index_encounters.csv,vdi_shown,flag; 0|1,1 = the score was visible to staff (alerts live)
+data/deterioration/index_encounters.csv,alert_fired,flag; 0|1,1 = score shown and at or above the threshold
+data/deterioration/index_encounters.csv,rrt_evaluated,flag; 0|1,1 = a rapid-response evaluation followed the alert
+data/deterioration/index_encounters.csv,ehr_outcome_48h,flag; 0|1,EHR flag for deterioration within 48 hours; empty if the label was not yet available when the data end
+data/deterioration/index_encounters.csv,outcome_available_date,date; YYYY-MM-DD,Date the outcome label became available; empty if that is after the data end
+data/deterioration/vendor_risk_table.csv,vdi_version,code; 2.0|3.0,VDI version
+data/deterioration/vendor_risk_table.csv,vdi_score,int; 0-100,Score
+data/deterioration/vendor_risk_table.csv,vendor_risk,"float, 4 decimals; 0-1",Vendor's stated risk of deterioration within 48 hours at this score
+data/deterioration/chart_review.csv,encounter_id,id; E00000001,Reviewed silent-mode encounter
+data/deterioration/chart_review.csv,stratum,int; 1-10,"Stratum: 1 plus the number of score deciles the encounter's score is above, among silent-mode encounters"
+data/deterioration/chart_review.csv,stratum_size,int; > 0,Encounters in the stratum
+data/deterioration/chart_review.csv,stratum_sampled,int; > 0,Encounters sampled from the stratum
+data/deterioration/chart_review.csv,incl_prob,"float, 6 decimals; 0-1",Inclusion probability
+data/deterioration/chart_review.csv,reviewer_outcome,flag; 0|1,"Deterioration within 48 hours, by clinician chart review"
+data/deterioration/rrt_log.csv,rrt_id,id; RR000001,Rapid-response evaluation ID
+data/deterioration/rrt_log.csv,encounter_id,id; E00000001,Encounter evaluated
+data/deterioration/rrt_log.csv,rrt_datetime,datetime; YYYY-MM-DDTHH:00,Time the evaluation began
+data/deterioration/rrt_log.csv,nurse_minutes,"float, 0 decimals; minutes",Nurse time spent
+data/deterioration/rrt_log.csv,physician_minutes,"float, 0 decimals; minutes",Physician time spent
+data/scribe/clinics.csv,clinic_id,id; C01-C24,Clinic ID
+data/scribe/clinics.csv,clinic_type,code; primary_care|specialty,Clinic type
+data/scribe/clinics.csv,specialty,code; primary_care|cardiology|oncology|orthopaedics|endocrinology|pulmonology|gastroenterology,Clinic specialty
+data/scribe/clinics.csv,area,code; north|central|south,Coarse fictional area
+data/scribe/clinics.csv,n_clinicians,int; > 0,Clinicians in the pilot at this clinic
+data/scribe/clinicians.csv,clinician_id,id; K001,Clinician ID
+data/scribe/clinicians.csv,clinic_id,id; C01-C24,Clinic
+data/scribe/clinicians.csv,role,code; physician|np|pa,Role
+data/scribe/clinicians.csv,specialty,code; primary_care|cardiology|oncology|orthopaedics|endocrinology|pulmonology|gastroenterology,Specialty
+data/scribe/clinicians.csv,fte,"float, 1 decimal; 0.5-1.0",Clinical full-time equivalent
+data/scribe/rollout.csv,clinic_id,id; C01-C24,Clinic
+data/scribe/rollout.csv,stratum,code; primary_care|specialty,Randomisation stratum
+data/scribe/rollout.csv,wave,int; 1-4,Rollout wave drawn
+data/scribe/rollout.csv,go_live_date,date; YYYY-MM-DD,Monday the scribe went live at the clinic
+data/scribe/clinician_weeks.csv,clinician_id,id; K001,Clinician
+data/scribe/clinician_weeks.csv,clinic_id,id; C01-C24,Clinic
+data/scribe/clinician_weeks.csv,week_start,date; YYYY-MM-DD,Monday starting the week
+data/scribe/clinician_weeks.csv,week_index,int; 1-64,Week of the measurement period
+data/scribe/clinician_weeks.csv,clinic_live,flag; 0|1,1 = the scribe is live at the clinic this week
+data/scribe/clinician_weeks.csv,weeks_since_go_live,int; >= 0,"Whole weeks since the clinic went live, 0 in the go-live week; empty before go-live"
+data/scribe/clinician_weeks.csv,holiday_week,flag; 0|1,1 = a low-volume holiday week
+data/scribe/clinician_weeks.csv,visits,int; >= 0,Visits this week
+data/scribe/clinician_weeks.csv,scribe_visits,int; >= 0,Visits where the scribe drafted the note
+data/scribe/clinician_weeks.csv,scribe_share,"float, 3 decimals; 0-1",scribe_visits divided by visits; empty when visits is 0
+data/scribe/clinician_weeks.csv,doc_minutes_per_visit,"float, 1 decimal; minutes","Documentation time per visit, from EHR audit logs; empty when visits is 0"
+data/scribe/clinician_weeks.csv,after_hours_minutes,"float, 0 decimals; minutes",EHR time outside scheduled hours this week
+data/scribe/clinician_weeks.csv,same_day_close_share,"float, 3 decimals; 0-1",Share of notes closed the same day; empty when visits is 0
+data/scribe/wellbeing_survey.csv,clinician_id,id; K001,Clinician
+data/scribe/wellbeing_survey.csv,survey_wave,code; baseline|post_wave|final,Survey wave; clinicians at wave 4 clinics have no post_wave row
+data/scribe/wellbeing_survey.csv,survey_month,month; YYYY-MM,Month the survey was fielded
+data/scribe/wellbeing_survey.csv,responded,flag; 0|1,1 = the clinician responded
+data/scribe/wellbeing_survey.csv,item1,int; 1-5,Tonmick Clinician Pulse item 1; empty if no response
+data/scribe/wellbeing_survey.csv,item2,int; 1-5,Tonmick Clinician Pulse item 2; empty if no response
+data/scribe/wellbeing_survey.csv,item3,int; 1-5,Tonmick Clinician Pulse item 3; empty if no response
+data/scribe/wellbeing_survey.csv,item4,int; 1-5,Tonmick Clinician Pulse item 4; empty if no response
+data/scribe/wellbeing_survey.csv,item5,int; 1-5,Tonmick Clinician Pulse item 5; empty if no response
+data/scribe/ai_notes_frame.csv,note_id,id; N0000001,Note ID
+data/scribe/ai_notes_frame.csv,visit_date,date; YYYY-MM-DD,Date of the visit
+data/scribe/ai_notes_frame.csv,week_start,date; YYYY-MM-DD,Monday starting the visit's week
+data/scribe/ai_notes_frame.csv,clinic_id,id; C01-C24,Clinic
+data/scribe/ai_notes_frame.csv,clinician_id,id; K001,Clinician
+data/scribe/ai_notes_frame.csv,specialty,code; primary_care|cardiology|oncology|orthopaedics|endocrinology|pulmonology|gastroenterology,Specialty
+data/scribe/ai_notes_frame.csv,visit_type,code; new|follow_up|annual|procedure,Visit type
+data/scribe/ai_notes_frame.csv,visit_minutes,"float, 0 decimals; minutes",Length of the visit
+data/scribe/ai_notes_frame.csv,interpreter_used,flag; 0|1,1 = an interpreter took part
+data/scribe/ai_notes_frame.csv,n_speakers,int; 2-6,"Speakers in the room, the interpreter included"
+data/scribe/ai_notes_frame.csv,scribe_version,code; 2.3|2.4,Scribe model version
+data/scribe/ai_notes_frame.csv,note_words,int; > 0,Words in the AI draft
+data/scribe/ai_notes_frame.csv,edit_minutes,"float, 1 decimal; minutes",Clinician time editing the draft
+data/scribe/audit_sample.csv,note_id,id; N0000001,Sampled note
+data/scribe/audit_sample.csv,stratum,code; primary_care-no_interp-v2.3|primary_care-no_interp-v2.4|primary_care-interp-v2.3|primary_care-interp-v2.4|medical-no_interp-v2.3|medical-no_interp-v2.4|medical-interp-v2.3|medical-interp-v2.4|procedural-no_interp-v2.3|procedural-no_interp-v2.4|procedural-interp-v2.3|procedural-interp-v2.4,"Sampling stratum: specialty group (primary_care; medical = cardiology, oncology, endocrinology, pulmonology; procedural = orthopaedics, gastroenterology), interpreter used or not, scribe version"
+data/scribe/audit_sample.csv,stratum_size,int; > 0,Notes in the stratum
+data/scribe/audit_sample.csv,stratum_sampled,int; > 0,Notes sampled from the stratum
+data/scribe/audit_sample.csv,incl_prob,"float, 6 decimals; 0-1",Inclusion probability
+data/scribe/audit_ratings.csv,note_id,id; N0000001,Rated note
+data/scribe/audit_ratings.csv,rating_round,int; 1|2|3,"1 and 2 = independent ratings; 3 = the senior reviewer's rating, present when rounds 1 and 2 differ in any field"
+data/scribe/audit_ratings.csv,rater_id,id; R01-R09,Rater; R09 is the senior reviewer
+data/scribe/audit_ratings.csv,omission,flag; 0|1,Rater found at least one omission
+data/scribe/audit_ratings.csv,hallucination,flag; 0|1,Rater found content that was not said
+data/scribe/audit_ratings.csv,misattribution,flag; 0|1,Rater found content attributed to the wrong speaker or person
+data/scribe/audit_ratings.csv,wrong_value,flag; 0|1,Rater found a wrong number or dose
+data/scribe/audit_ratings.csv,severity,code; none|minor|moderate|major,Worst severity the rater assigned; none when the rater found no error
+data/economics/scribe_costs.csv,cost_line,code; short code,Cost line
+data/economics/scribe_costs.csv,unit,text,Unit the cost is quoted in
+data/economics/scribe_costs.csv,unit_cost,"float, 2 decimals; USD","Cost per unit (invented price); empty when the unit is an hour, costed from wage_rates.csv"
+data/economics/scribe_costs.csv,quantity,"float, 2 decimals; >= 0",Number of units; empty when the units are counted from the data
+data/economics/scribe_costs.csv,wage_role,code; physician|it_analyst|manager|clinician,Role in wage_rates.csv that prices an hour; clinician = the clinician's own role; empty when unit_cost is given
+data/economics/scribe_costs.csv,quantity_basis,text,How to count units
+data/economics/scribe_costs.csv,notes,text,Source note or 'design choice'
+data/economics/wage_rates.csv,role,code; physician|hospitalist|np|pa|rn|it_analyst|manager,"Staff role; physician, np and pa match clinicians.csv; rn and hospitalist price the rapid-response log"
+data/economics/wage_rates.csv,hourly_wage,"float, 2 decimals; USD per hour","Published national wage per hour, before benefits"
+data/economics/wage_rates.csv,loaded_hourly_cost,"float, 2 decimals; USD per hour",Hourly wage times the loading for benefits
+data/economics/wage_rates.csv,source_note,text,What the wage figure is and where it was published
+hidden/inpatient/facility_truth.csv,facility_id,id; F01-F06,Hospital
+hidden/inpatient/facility_truth.csv,readmit_effect_logit,"float, 6 decimals; logit",True facility effect on readmission
+hidden/inpatient/facility_truth.csv,deterioration_effect_logit,"float, 6 decimals; logit",True facility effect on deterioration
+hidden/inpatient/persons_truth.csv,person_id,id; P0000001,Person
+hidden/inpatient/persons_truth.csv,in_published_data,flag; 0|1,1 = the person is in data/inpatient/persons.csv; 0 = admitted only in the 2021 burn-in
+hidden/inpatient/persons_truth.csv,frailty,"float, 6 decimals; standardised",Unmeasured frailty
+hidden/inpatient/persons_truth.csv,outside_care_propensity,"float, 6 decimals; 0-1",Propensity to use non-network hospitals
+hidden/inpatient/persons_truth.csv,death_date,date; YYYY-MM-DD,"Date of death, in a network hospital or within 180 days of a network discharge; empty if no such death by the end of the data"
+hidden/inpatient/persons_truth.csv,death_place,code; network_hospital|outside,Where the person died; empty if alive
+hidden/inpatient/admissions_truth_2021.csv,encounter_id,id; E00000001,Encounter
+hidden/inpatient/admissions_truth_2021.csv,person_id,id; P0000001,Person
+hidden/inpatient/admissions_truth_2021.csv,in_published_data,flag; 0|1,"0 = a 2021 burn-in admission, not in data/"
+hidden/inpatient/admissions_truth_2021.csv,severity_latent,"float, 6 decimals; standardised",Unmeasured severity at admission
+hidden/inpatient/admissions_truth_2021.csv,sodium_true,"float, 1 decimal; mmol/L",True sodium
+hidden/inpatient/admissions_truth_2021.csv,creatinine_true,"float, 2 decimals; mg/dL",True creatinine
+hidden/inpatient/admissions_truth_2021.csv,hemoglobin_true,"float, 1 decimal; g/dL",True hemoglobin
+hidden/inpatient/admissions_truth_2021.csv,wbc_true,"float, 1 decimal; 10^9/L",True white cell count
+hidden/inpatient/admissions_truth_2021.csv,lactate_true,"float, 2 decimals; mmol/L","True lactate, whether or not it was drawn"
+hidden/inpatient/admissions_truth_2021.csv,lactate_drawn,flag; 0|1,1 = lactate was drawn
+hidden/inpatient/admissions_truth_2021.csv,readmit_eligible,flag; 0|1,"1 = a live discharge home, with home health or to skilled nursing"
+hidden/inpatient/admissions_truth_2021.csv,readmit_lp,"float, 6 decimals; logit",True linear predictor for 30-day readmission; empty if not eligible
+hidden/inpatient/admissions_truth_2021.csv,readmit_prob,"float, 6 decimals; 0-1",True probability of unplanned 30-day readmission to any hospital; empty if not eligible
+hidden/inpatient/admissions_truth_2021.csv,readmit_any_30d,flag; 0|1,"True unplanned readmission to any hospital within 30 days: the first return after discharge, when that return was not planned"
+hidden/inpatient/admissions_truth_2021.csv,readmit_outside,flag; 0|1,1 = that readmission was to a non-network hospital
+hidden/inpatient/admissions_truth_2021.csv,readmit_gap_days,int; 1-30,Days from discharge to readmission; empty if none
+hidden/inpatient/admissions_truth_2021.csv,planned_return,flag; 0|1,1 = the first return within 30 days was a planned one (not counted as a readmission)
+hidden/inpatient/admissions_truth_2021.csv,readmit_encounter_id,id; E00000001,"The readmission's encounter ID; empty if none, outside the network, or after the data end"
+hidden/inpatient/admissions_truth_2022.csv,encounter_id,id; E00000001,Encounter
+hidden/inpatient/admissions_truth_2022.csv,person_id,id; P0000001,Person
+hidden/inpatient/admissions_truth_2022.csv,in_published_data,flag; 0|1,"0 = a 2021 burn-in admission, not in data/"
+hidden/inpatient/admissions_truth_2022.csv,severity_latent,"float, 6 decimals; standardised",Unmeasured severity at admission
+hidden/inpatient/admissions_truth_2022.csv,sodium_true,"float, 1 decimal; mmol/L",True sodium
+hidden/inpatient/admissions_truth_2022.csv,creatinine_true,"float, 2 decimals; mg/dL",True creatinine
+hidden/inpatient/admissions_truth_2022.csv,hemoglobin_true,"float, 1 decimal; g/dL",True hemoglobin
+hidden/inpatient/admissions_truth_2022.csv,wbc_true,"float, 1 decimal; 10^9/L",True white cell count
+hidden/inpatient/admissions_truth_2022.csv,lactate_true,"float, 2 decimals; mmol/L","True lactate, whether or not it was drawn"
+hidden/inpatient/admissions_truth_2022.csv,lactate_drawn,flag; 0|1,1 = lactate was drawn
+hidden/inpatient/admissions_truth_2022.csv,readmit_eligible,flag; 0|1,"1 = a live discharge home, with home health or to skilled nursing"
+hidden/inpatient/admissions_truth_2022.csv,readmit_lp,"float, 6 decimals; logit",True linear predictor for 30-day readmission; empty if not eligible
+hidden/inpatient/admissions_truth_2022.csv,readmit_prob,"float, 6 decimals; 0-1",True probability of unplanned 30-day readmission to any hospital; empty if not eligible
+hidden/inpatient/admissions_truth_2022.csv,readmit_any_30d,flag; 0|1,"True unplanned readmission to any hospital within 30 days: the first return after discharge, when that return was not planned"
+hidden/inpatient/admissions_truth_2022.csv,readmit_outside,flag; 0|1,1 = that readmission was to a non-network hospital
+hidden/inpatient/admissions_truth_2022.csv,readmit_gap_days,int; 1-30,Days from discharge to readmission; empty if none
+hidden/inpatient/admissions_truth_2022.csv,planned_return,flag; 0|1,1 = the first return within 30 days was a planned one (not counted as a readmission)
+hidden/inpatient/admissions_truth_2022.csv,readmit_encounter_id,id; E00000001,"The readmission's encounter ID; empty if none, outside the network, or after the data end"
+hidden/inpatient/admissions_truth_2023.csv,encounter_id,id; E00000001,Encounter
+hidden/inpatient/admissions_truth_2023.csv,person_id,id; P0000001,Person
+hidden/inpatient/admissions_truth_2023.csv,in_published_data,flag; 0|1,"0 = a 2021 burn-in admission, not in data/"
+hidden/inpatient/admissions_truth_2023.csv,severity_latent,"float, 6 decimals; standardised",Unmeasured severity at admission
+hidden/inpatient/admissions_truth_2023.csv,sodium_true,"float, 1 decimal; mmol/L",True sodium
+hidden/inpatient/admissions_truth_2023.csv,creatinine_true,"float, 2 decimals; mg/dL",True creatinine
+hidden/inpatient/admissions_truth_2023.csv,hemoglobin_true,"float, 1 decimal; g/dL",True hemoglobin
+hidden/inpatient/admissions_truth_2023.csv,wbc_true,"float, 1 decimal; 10^9/L",True white cell count
+hidden/inpatient/admissions_truth_2023.csv,lactate_true,"float, 2 decimals; mmol/L","True lactate, whether or not it was drawn"
+hidden/inpatient/admissions_truth_2023.csv,lactate_drawn,flag; 0|1,1 = lactate was drawn
+hidden/inpatient/admissions_truth_2023.csv,readmit_eligible,flag; 0|1,"1 = a live discharge home, with home health or to skilled nursing"
+hidden/inpatient/admissions_truth_2023.csv,readmit_lp,"float, 6 decimals; logit",True linear predictor for 30-day readmission; empty if not eligible
+hidden/inpatient/admissions_truth_2023.csv,readmit_prob,"float, 6 decimals; 0-1",True probability of unplanned 30-day readmission to any hospital; empty if not eligible
+hidden/inpatient/admissions_truth_2023.csv,readmit_any_30d,flag; 0|1,"True unplanned readmission to any hospital within 30 days: the first return after discharge, when that return was not planned"
+hidden/inpatient/admissions_truth_2023.csv,readmit_outside,flag; 0|1,1 = that readmission was to a non-network hospital
+hidden/inpatient/admissions_truth_2023.csv,readmit_gap_days,int; 1-30,Days from discharge to readmission; empty if none
+hidden/inpatient/admissions_truth_2023.csv,planned_return,flag; 0|1,1 = the first return within 30 days was a planned one (not counted as a readmission)
+hidden/inpatient/admissions_truth_2023.csv,readmit_encounter_id,id; E00000001,"The readmission's encounter ID; empty if none, outside the network, or after the data end"
+hidden/inpatient/admissions_truth_2024.csv,encounter_id,id; E00000001,Encounter
+hidden/inpatient/admissions_truth_2024.csv,person_id,id; P0000001,Person
+hidden/inpatient/admissions_truth_2024.csv,in_published_data,flag; 0|1,"0 = a 2021 burn-in admission, not in data/"
+hidden/inpatient/admissions_truth_2024.csv,severity_latent,"float, 6 decimals; standardised",Unmeasured severity at admission
+hidden/inpatient/admissions_truth_2024.csv,sodium_true,"float, 1 decimal; mmol/L",True sodium
+hidden/inpatient/admissions_truth_2024.csv,creatinine_true,"float, 2 decimals; mg/dL",True creatinine
+hidden/inpatient/admissions_truth_2024.csv,hemoglobin_true,"float, 1 decimal; g/dL",True hemoglobin
+hidden/inpatient/admissions_truth_2024.csv,wbc_true,"float, 1 decimal; 10^9/L",True white cell count
+hidden/inpatient/admissions_truth_2024.csv,lactate_true,"float, 2 decimals; mmol/L","True lactate, whether or not it was drawn"
+hidden/inpatient/admissions_truth_2024.csv,lactate_drawn,flag; 0|1,1 = lactate was drawn
+hidden/inpatient/admissions_truth_2024.csv,readmit_eligible,flag; 0|1,"1 = a live discharge home, with home health or to skilled nursing"
+hidden/inpatient/admissions_truth_2024.csv,readmit_lp,"float, 6 decimals; logit",True linear predictor for 30-day readmission; empty if not eligible
+hidden/inpatient/admissions_truth_2024.csv,readmit_prob,"float, 6 decimals; 0-1",True probability of unplanned 30-day readmission to any hospital; empty if not eligible
+hidden/inpatient/admissions_truth_2024.csv,readmit_any_30d,flag; 0|1,"True unplanned readmission to any hospital within 30 days: the first return after discharge, when that return was not planned"
+hidden/inpatient/admissions_truth_2024.csv,readmit_outside,flag; 0|1,1 = that readmission was to a non-network hospital
+hidden/inpatient/admissions_truth_2024.csv,readmit_gap_days,int; 1-30,Days from discharge to readmission; empty if none
+hidden/inpatient/admissions_truth_2024.csv,planned_return,flag; 0|1,1 = the first return within 30 days was a planned one (not counted as a readmission)
+hidden/inpatient/admissions_truth_2024.csv,readmit_encounter_id,id; E00000001,"The readmission's encounter ID; empty if none, outside the network, or after the data end"
+hidden/inpatient/admissions_truth_2025.csv,encounter_id,id; E00000001,Encounter
+hidden/inpatient/admissions_truth_2025.csv,person_id,id; P0000001,Person
+hidden/inpatient/admissions_truth_2025.csv,in_published_data,flag; 0|1,"0 = a 2021 burn-in admission, not in data/"
+hidden/inpatient/admissions_truth_2025.csv,severity_latent,"float, 6 decimals; standardised",Unmeasured severity at admission
+hidden/inpatient/admissions_truth_2025.csv,sodium_true,"float, 1 decimal; mmol/L",True sodium
+hidden/inpatient/admissions_truth_2025.csv,creatinine_true,"float, 2 decimals; mg/dL",True creatinine
+hidden/inpatient/admissions_truth_2025.csv,hemoglobin_true,"float, 1 decimal; g/dL",True hemoglobin
+hidden/inpatient/admissions_truth_2025.csv,wbc_true,"float, 1 decimal; 10^9/L",True white cell count
+hidden/inpatient/admissions_truth_2025.csv,lactate_true,"float, 2 decimals; mmol/L","True lactate, whether or not it was drawn"
+hidden/inpatient/admissions_truth_2025.csv,lactate_drawn,flag; 0|1,1 = lactate was drawn
+hidden/inpatient/admissions_truth_2025.csv,readmit_eligible,flag; 0|1,"1 = a live discharge home, with home health or to skilled nursing"
+hidden/inpatient/admissions_truth_2025.csv,readmit_lp,"float, 6 decimals; logit",True linear predictor for 30-day readmission; empty if not eligible
+hidden/inpatient/admissions_truth_2025.csv,readmit_prob,"float, 6 decimals; 0-1",True probability of unplanned 30-day readmission to any hospital; empty if not eligible
+hidden/inpatient/admissions_truth_2025.csv,readmit_any_30d,flag; 0|1,"True unplanned readmission to any hospital within 30 days: the first return after discharge, when that return was not planned"
+hidden/inpatient/admissions_truth_2025.csv,readmit_outside,flag; 0|1,1 = that readmission was to a non-network hospital
+hidden/inpatient/admissions_truth_2025.csv,readmit_gap_days,int; 1-30,Days from discharge to readmission; empty if none
+hidden/inpatient/admissions_truth_2025.csv,planned_return,flag; 0|1,1 = the first return within 30 days was a planned one (not counted as a readmission)
+hidden/inpatient/admissions_truth_2025.csv,readmit_encounter_id,id; E00000001,"The readmission's encounter ID; empty if none, outside the network, or after the data end"
+hidden/inpatient/admissions_truth_2026.csv,encounter_id,id; E00000001,Encounter
+hidden/inpatient/admissions_truth_2026.csv,person_id,id; P0000001,Person
+hidden/inpatient/admissions_truth_2026.csv,in_published_data,flag; 0|1,"0 = a 2021 burn-in admission, not in data/"
+hidden/inpatient/admissions_truth_2026.csv,severity_latent,"float, 6 decimals; standardised",Unmeasured severity at admission
+hidden/inpatient/admissions_truth_2026.csv,sodium_true,"float, 1 decimal; mmol/L",True sodium
+hidden/inpatient/admissions_truth_2026.csv,creatinine_true,"float, 2 decimals; mg/dL",True creatinine
+hidden/inpatient/admissions_truth_2026.csv,hemoglobin_true,"float, 1 decimal; g/dL",True hemoglobin
+hidden/inpatient/admissions_truth_2026.csv,wbc_true,"float, 1 decimal; 10^9/L",True white cell count
+hidden/inpatient/admissions_truth_2026.csv,lactate_true,"float, 2 decimals; mmol/L","True lactate, whether or not it was drawn"
+hidden/inpatient/admissions_truth_2026.csv,lactate_drawn,flag; 0|1,1 = lactate was drawn
+hidden/inpatient/admissions_truth_2026.csv,readmit_eligible,flag; 0|1,"1 = a live discharge home, with home health or to skilled nursing"
+hidden/inpatient/admissions_truth_2026.csv,readmit_lp,"float, 6 decimals; logit",True linear predictor for 30-day readmission; empty if not eligible
+hidden/inpatient/admissions_truth_2026.csv,readmit_prob,"float, 6 decimals; 0-1",True probability of unplanned 30-day readmission to any hospital; empty if not eligible
+hidden/inpatient/admissions_truth_2026.csv,readmit_any_30d,flag; 0|1,"True unplanned readmission to any hospital within 30 days: the first return after discharge, when that return was not planned"
+hidden/inpatient/admissions_truth_2026.csv,readmit_outside,flag; 0|1,1 = that readmission was to a non-network hospital
+hidden/inpatient/admissions_truth_2026.csv,readmit_gap_days,int; 1-30,Days from discharge to readmission; empty if none
+hidden/inpatient/admissions_truth_2026.csv,planned_return,flag; 0|1,1 = the first return within 30 days was a planned one (not counted as a readmission)
+hidden/inpatient/admissions_truth_2026.csv,readmit_encounter_id,id; E00000001,"The readmission's encounter ID; empty if none, outside the network, or after the data end"
+hidden/inpatient/burnin_admissions_2021.csv,encounter_id,id; E00000001,Encounter (admission) ID
+hidden/inpatient/burnin_admissions_2021.csv,person_id,id; P0000001,Person ID; key to persons.csv
+hidden/inpatient/burnin_admissions_2021.csv,facility_id,id; F01-F06,Admitting hospital
+hidden/inpatient/burnin_admissions_2021.csv,admit_datetime,datetime; YYYY-MM-DDTHH:00,Admission date and hour
+hidden/inpatient/burnin_admissions_2021.csv,discharge_date,date; YYYY-MM-DD,Discharge or death date; empty if still in hospital when the data end
+hidden/inpatient/burnin_admissions_2021.csv,los_days,"float, 1 decimal; >= 0.1",Length of stay in days; empty if still in hospital
+hidden/inpatient/burnin_admissions_2021.csv,age,int; 18-105,Age in years at admission
+hidden/inpatient/burnin_admissions_2021.csv,payer,code; medicare|medicaid|commercial|self_pay,Payer at admission
+hidden/inpatient/burnin_admissions_2021.csv,admission_type,code; emergency|elective,Emergency or elective admission
+hidden/inpatient/burnin_admissions_2021.csv,service,code; medicine|surgery,Admitting service
+hidden/inpatient/burnin_admissions_2021.csv,dx_group,code; sepsis|heart_failure|copd|pneumonia|gi|renal|stroke|cancer|other_cardiac|diabetes|ortho_surgical|other,Invented principal diagnosis group
+hidden/inpatient/burnin_admissions_2021.csv,comorbidity_count,int; 0-12,Invented count of chronic-condition flags
+hidden/inpatient/burnin_admissions_2021.csv,prior_admits_12m,int; >= 0,"Network admissions in the 12 months before this one, as the network's record sees them"
+hidden/inpatient/burnin_admissions_2021.csv,planned_admission,flag; 0|1,"1 = a planned return, scheduled at an earlier discharge"
+hidden/inpatient/burnin_admissions_2021.csv,sodium,"float, 0 decimals; mmol/L","Admission sodium, as recorded; empty if not measured"
+hidden/inpatient/burnin_admissions_2021.csv,creatinine,"float, 2 decimals; mg/dL","Admission creatinine, as recorded; empty if not measured"
+hidden/inpatient/burnin_admissions_2021.csv,hemoglobin,"float, 1 decimal; g/dL","Admission hemoglobin, as recorded; empty if not measured"
+hidden/inpatient/burnin_admissions_2021.csv,wbc,"float, 1 decimal; 10^9/L","Admission white cell count, as recorded; empty if not measured"
+hidden/inpatient/burnin_admissions_2021.csv,lactate,"float, 1 decimal; mmol/L","Admission lactate, as recorded; empty if not drawn"
+hidden/inpatient/burnin_admissions_2021.csv,icu_at_12h,flag; 0|1,1 = in intensive care 12 hours after admission
+hidden/inpatient/burnin_admissions_2021.csv,comfort_care_12h,flag; 0|1,1 = on comfort care 12 hours after admission
+hidden/inpatient/burnin_admissions_2021.csv,disposition,code; home|home_health|snf|hospice|ama|transfer|died,Discharge disposition; empty if still in hospital
+hidden/inpatient/burnin_admissions_2021.csv,died_in_hospital,flag; 0|1,1 = died during this admission
+hidden/inpatient/outside_readmissions.csv,index_encounter_id,id; E00000001,Network discharge that was followed by an outside readmission
+hidden/inpatient/outside_readmissions.csv,person_id,id; P0000001,Person
+hidden/inpatient/outside_readmissions.csv,outside_admit_date,date; YYYY-MM-DD,Admission date at the non-network hospital
+hidden/inpatient/outside_readmissions.csv,gap_days,int; 1-30,Days from discharge to the outside admission
+hidden/deterioration/index_truth.csv,encounter_id,id; E00000001,Index encounter
+hidden/deterioration/index_truth.csv,hr_true,"float, 1 decimal; beats/min",True heart rate
+hidden/deterioration/index_truth.csv,rr_true,"float, 1 decimal; breaths/min",True respiratory rate
+hidden/deterioration/index_truth.csv,sbp_true,"float, 1 decimal; mmHg",True systolic blood pressure
+hidden/deterioration/index_truth.csv,temp_c_true,"float, 2 decimals; deg C",True temperature
+hidden/deterioration/index_truth.csv,spo2_true,"float, 1 decimal; percent",True oxygen saturation
+hidden/deterioration/index_truth.csv,lactate_true,"float, 2 decimals; mmol/L",True lactate at the index time
+hidden/deterioration/index_truth.csv,spo2_bias,"float, 2 decimals; points",Planted upward bias in recorded SpO2
+hidden/deterioration/index_truth.csv,rr_defaulted,flag; 0|1,1 = the recorded respiratory rate is the charted default
+hidden/deterioration/index_truth.csv,outside_encounters_12m,int; >= 0,Encounters at non-network hospitals in the last 12 months
+hidden/deterioration/index_truth.csv,deterioration_lp,"float, 6 decimals; logit",True linear predictor for deterioration with no response
+hidden/deterioration/index_truth.csv,p0,"float, 6 decimals; 0-1",True risk of deterioration with no rapid-response evaluation
+hidden/deterioration/index_truth.csv,p1,"float, 6 decimals; 0-1",True risk with an evaluation (0.80 x p0)
+hidden/deterioration/index_truth.csv,y0,flag; 0|1,Potential outcome with no evaluation
+hidden/deterioration/index_truth.csv,y1,flag; 0|1,Potential outcome with an evaluation
+hidden/deterioration/index_truth.csv,event_type,code; icu_transfer|transfer_out|death,What the event is when the patient deteriorates; empty if y0 is 0
+hidden/deterioration/index_truth.csv,response_prob,"float, 6 decimals; 0-1",Probability an alert is answered; empty if no alert
+hidden/deterioration/index_truth.csv,y_true,flag; 0|1,Realised true deterioration within 48 hours
+hidden/deterioration/index_truth.csv,ehr_flag_error,code; none|missed|false_positive,How the EHR flag differs from the truth
+hidden/deterioration/index_truth.csv,vdi_score_no_assay_shift,int; 0-100,VDI score the same patient would have had without the lactate assay shift
+hidden/deterioration/change_points.csv,change_id,id; CP01,Planted change ID
+hidden/deterioration/change_points.csv,change_date,date; YYYY-MM-DD,Date the change took effect
+hidden/deterioration/change_points.csv,facilities,text; F01;F02,Hospitals affected
+hidden/deterioration/change_points.csv,mechanism,code; short code,Planted mechanism
+hidden/deterioration/change_points.csv,size,"float, 4 decimals; see unit",Size of the change
+hidden/deterioration/change_points.csv,unit,text,Unit of size
+hidden/deterioration/change_points.csv,description,text,What the simulator did
+hidden/deterioration/monthly_truth.csv,month,month; YYYY-MM,Calendar month of the index time
+hidden/deterioration/monthly_truth.csv,facility_group,code; f01_f03|f04_f05|f06|all,Hospital group
+hidden/deterioration/monthly_truth.csv,index_encounters,int; >= 0,Index encounters
+hidden/deterioration/monthly_truth.csv,true_rate_no_response,"float, 6 decimals; 0-1",Mean true risk with no evaluation (p0)
+hidden/deterioration/monthly_truth.csv,true_rate_as_treated,"float, 6 decimals; 0-1",Mean true risk given the responses that happened
+hidden/deterioration/monthly_truth.csv,vendor_expected_rate,"float, 6 decimals; 0-1",Mean vendor risk from the score-to-risk table
+hidden/deterioration/monthly_truth.csv,true_oe,"float, 4 decimals; ratio",true_rate_as_treated divided by vendor_expected_rate
+hidden/deterioration/monthly_truth.csv,alert_rate,"float, 4 decimals; 0-1",Share of encounters at or above the threshold
+hidden/deterioration/monthly_truth.csv,response_rate,"float, 4 decimals; 0-1",Share of fired alerts answered; empty if none fired
+hidden/scribe/note_errors_truth.csv,note_id,id; N0000001,Note
+hidden/scribe/note_errors_truth.csv,n_omission,int; >= 0,True omissions
+hidden/scribe/note_errors_truth.csv,n_hallucination,int; >= 0,True items of content that were not said
+hidden/scribe/note_errors_truth.csv,n_misattribution,int; >= 0,True misattributions
+hidden/scribe/note_errors_truth.csv,n_wrong_value,int; >= 0,True wrong numbers or doses
+hidden/scribe/note_errors_truth.csv,worst_severity,code; none|minor|moderate|major,True worst severity
+hidden/scribe/rater_parameters.csv,rater_id,id; R01-R09,Rater
+hidden/scribe/rater_parameters.csv,rater_role,code; rater|senior,Role in the audit
+hidden/scribe/rater_parameters.csv,sens_omission,"float, 4 decimals; 0-1",True sensitivity for omissions
+hidden/scribe/rater_parameters.csv,sens_hallucination,"float, 4 decimals; 0-1",True sensitivity for hallucinations
+hidden/scribe/rater_parameters.csv,sens_misattribution,"float, 4 decimals; 0-1",True sensitivity for misattributions
+hidden/scribe/rater_parameters.csv,sens_wrong_value,"float, 4 decimals; 0-1",True sensitivity for wrong values
+hidden/scribe/rater_parameters.csv,false_positive_rate,"float, 4 decimals; 0-1",True false-positive rate per error type
+hidden/scribe/clinic_effects.csv,clinic_id,id; C01-C24,Clinic
+hidden/scribe/clinic_effects.csv,error_effect_logit,"float, 6 decimals; logit",True clinic effect on every kind of note error
+hidden/scribe/clinic_effects.csv,interpreter_rate,"float, 4 decimals; 0-1",True chance that a visit at the clinic uses an interpreter
+hidden/economics/clinician_truth.csv,clinician_id,id; K001,Clinician
+hidden/economics/clinician_truth.csv,baseline_doc_minutes,"float, 2 decimals; minutes",True baseline documentation minutes per visit
+hidden/economics/clinician_truth.csv,adoption_type,code; adopter|partial|never,True adoption type
+hidden/economics/clinician_truth.csv,individual_effect_minutes,"float, 2 decimals; minutes",True steady-state saving per scribe visit for this clinician
+hidden/economics/clinician_truth.csv,steady_share,"float, 4 decimals; 0-1",True share of visits on which the clinician uses the scribe once settled; 0 for never
+hidden/economics/clinician_truth.csv,after_hours_baseline,"float, 1 decimal; minutes",True typical after-hours minutes in a normal week without the scribe
+hidden/economics/clinician_truth.csv,latent_wellbeing_baseline,"float, 4 decimals; SD units",True latent wellbeing at baseline
+hidden/economics/clinician_truth.csv,wellbeing_effect,"float, 4 decimals; SD units",True effect of the scribe on latent wellbeing once the clinic is live
+hidden/economics/clinician_truth.csv,latent_wellbeing_post_wave,"float, 4 decimals; SD units","True latent wellbeing at the post-wave survey, effect included; empty at wave 4 clinics"
+hidden/economics/clinician_truth.csv,latent_wellbeing_final,"float, 4 decimals; SD units","True latent wellbeing at the final survey, effect included"
+hidden/economics/clinician_weeks_truth.csv,clinician_id,id; K001,Clinician
+hidden/economics/clinician_weeks_truth.csv,week_start,date; YYYY-MM-DD,Monday starting the week
+hidden/economics/clinician_weeks_truth.csv,expected_scribe_share,"float, 4 decimals; 0-1",True chance that a visit this week uses the scribe
+hidden/economics/clinician_weeks_truth.csv,learning,"float, 3 decimals; 0-1",Share of the full effect in force this week; 0 before go-live
+hidden/economics/clinician_weeks_truth.csv,saving_per_scribe_visit,"float, 2 decimals; minutes",True documentation minutes saved on each scribe visit this week
+hidden/economics/clinician_weeks_truth.csv,visits_no_scribe,int; >= 0,Visits this week had the scribe not existed (same random draw)
+hidden/economics/clinician_weeks_truth.csv,doc_minutes_no_scribe,"float, 1 decimal; minutes",Documentation minutes per visit had the scribe not existed; empty when visits is 0
+hidden/economics/clinician_weeks_truth.csv,after_hours_no_scribe,"float, 0 decimals; minutes",After-hours minutes had the scribe not existed

@@ -1,0 +1,20 @@
+event_date,event_code,scope,description
+2022-01-01,extract_start,F01;F02;F03;F04;F05,First admission date in this extract
+2023-01-01,r30_scores_start,F01;F02;F03;F04;F05,Tonmick R30 readmission scores calculated at discharge from this date
+2023-02-01,r30_worklist_start,F01;F02;F03;F04;F05,Tonmick R30 score shown on the discharge-planning worklist
+2023-07-01,vdi_silent_start,F01;F02;F03;F04;F05,Venncroft Deterioration Index scoring begins in silent mode
+2023-12-31,vdi_silent_end,F01;F02;F03;F04;F05,End of the planned silent-mode evaluation window
+2024-01-15,vdi_alerts_live,F01;F02;F03,Venncroft Deterioration Index alerts go live
+2024-04-01,vdi_alerts_live,F04;F05,Venncroft Deterioration Index alerts go live
+2024-10-01,acquisition,F06,Sallowfield Memorial Hospital joins Tonmick Health; its admissions enter network data
+2025-01-06,scribe_measure_start,all clinics,Measurement period for the Harkwell Ambient pilot begins
+2025-01-15,vdi_alerts_live,F06,Venncroft Deterioration Index scoring and alerts go live together
+2025-04-07,scribe_go_live,wave 1 clinics,Harkwell Ambient goes live at the first six clinics
+2025-07-07,scribe_go_live,wave 2 clinics,Harkwell Ambient goes live at the second six clinics
+2025-09-01,committee_formed,network,The board forms the AI Oversight Committee
+2025-10-06,scribe_go_live,wave 3 clinics,Harkwell Ambient goes live at the third six clinics
+2025-11-03,scribe_version,all live clinics,Harkwell Ambient version 2.4 replaces version 2.3
+2026-01-05,scribe_go_live,wave 4 clinics,Harkwell Ambient goes live at the last six clinics
+2026-02-01,vdi_version,F01;F02;F03;F04;F05;F06,Venncroft Deterioration Index version 3.0 replaces version 2.0; the vendor describes it as a recalibration
+2026-03-29,scribe_measure_end,all clinics,Measurement period for the Harkwell Ambient pilot ends
+2026-06-30,extract_end,network,Last date in this extract; later events are not recorded

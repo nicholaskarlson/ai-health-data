@@ -1,0 +1,7 @@
+facility_id,facility_name,facility_type,area,beds,network_data_from,vdi_scoring_from,vdi_alerts_from,central_lab
+F01,Tonmick University Medical Center,academic,central,452,2021-01-01,2023-07-01,2024-01-15,1
+F02,Brenmoor Community Hospital,community,central,218,2021-01-01,2023-07-01,2024-01-15,1
+F03,Tolvane Regional Hospital,community,south,164,2021-01-01,2023-07-01,2024-01-15,1
+F04,Northfen Hospital,critical_access,north,25,2021-01-01,2023-07-01,2024-04-01,0
+F05,Pellow Lake Hospital,critical_access,north,22,2021-01-01,2023-07-01,2024-04-01,0
+F06,Sallowfield Memorial Hospital,community,south,148,2024-10-01,2025-01-15,2025-01-15,0

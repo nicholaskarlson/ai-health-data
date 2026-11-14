@@ -1,0 +1,217 @@
+{
+  "apparent_c": 0.7080348739136281,
+  "coefficients_on_the_card": {
+    "age_65_plus": -0.091593,
+    "comorbidity_count": 0.226211,
+    "disp_home_health": 0.182945,
+    "disp_snf": 0.380414,
+    "dx_heart_failure": 0.488061,
+    "hemoglobin_low": 0.125943,
+    "intercept": -3.191717,
+    "los_over_5": 0.19766,
+    "prior_admits_1": 0.12732,
+    "prior_admits_2_plus": 0.569432,
+    "sodium_low": 0.77778,
+    "weekend_discharge": 0.260369,
+    "winter_discharge": -0.254083
+  },
+  "coefficients_unrounded": {
+    "age_65_plus": -0.09159266219589167,
+    "comorbidity_count": 0.22621057823272542,
+    "disp_home_health": 0.18294479502029878,
+    "disp_snf": 0.3804144391591062,
+    "dx_heart_failure": 0.4880609174134305,
+    "hemoglobin_low": 0.12594271435133045,
+    "intercept": -3.191716856243569,
+    "los_over_5": 0.19766000741435297,
+    "prior_admits_1": 0.1273197796987503,
+    "prior_admits_2_plus": 0.5694322806811157,
+    "sodium_low": 0.7777796494202465,
+    "weekend_discharge": 0.26036921413585573,
+    "winter_discharge": -0.25408300663970906
+  },
+  "deviance": 1189.305115648815,
+  "events": 217,
+  "kept_parameters": [
+    "age_65_plus",
+    "los_over_5",
+    "prior_admits_1",
+    "prior_admits_2_plus",
+    "comorbidity_count",
+    "disp_snf",
+    "disp_home_health",
+    "sodium_low",
+    "hemoglobin_low",
+    "dx_heart_failure",
+    "weekend_discharge",
+    "winter_discharge"
+  ],
+  "n": 1725,
+  "newton_steps": 25,
+  "note": "How the team's procedure ran on the development sample. A term is kept when its likelihood-ratio statistic is above the chi-square critical value for p = 0.20. Simulator truth: never evidence.",
+  "null_deviance": 1305.1983067384874,
+  "screen": [
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 16.043053618284148,
+      "parameters": [
+        "age_65_plus"
+      ],
+      "term": "age_65_plus"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": false,
+      "lr_statistic": 1.3909196729300675,
+      "parameters": [
+        "female"
+      ],
+      "term": "female"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 14.843324761732902,
+      "parameters": [
+        "los_over_5"
+      ],
+      "term": "los_over_5"
+    },
+    {
+      "critical_value": 3.2188758248682006,
+      "df": 2,
+      "kept": true,
+      "lr_statistic": 18.050381764942586,
+      "parameters": [
+        "prior_admits_1",
+        "prior_admits_2_plus"
+      ],
+      "term": "prior_admits"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 74.65156442328794,
+      "parameters": [
+        "comorbidity_count"
+      ],
+      "term": "comorbidity_count"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 12.198885633476266,
+      "parameters": [
+        "disp_snf"
+      ],
+      "term": "disp_snf"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 5.575515242537222,
+      "parameters": [
+        "disp_home_health"
+      ],
+      "term": "disp_home_health"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": false,
+      "lr_statistic": 0.0023432220837094064,
+      "parameters": [
+        "medicaid"
+      ],
+      "term": "medicaid"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 27.646723053268033,
+      "parameters": [
+        "sodium_low"
+      ],
+      "term": "sodium_low"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 7.840271862906775,
+      "parameters": [
+        "hemoglobin_low"
+      ],
+      "term": "hemoglobin_low"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": false,
+      "lr_statistic": 0.47109004739922966,
+      "parameters": [
+        "dx_cancer"
+      ],
+      "term": "dx_cancer"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 6.8664665333139965,
+      "parameters": [
+        "dx_heart_failure"
+      ],
+      "term": "dx_heart_failure"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": false,
+      "lr_statistic": 0.001303530742006842,
+      "parameters": [
+        "dx_copd"
+      ],
+      "term": "dx_copd"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": false,
+      "lr_statistic": 0.20773477882289626,
+      "parameters": [
+        "emergency"
+      ],
+      "term": "emergency"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 1.807225992113672,
+      "parameters": [
+        "weekend_discharge"
+      ],
+      "term": "weekend_discharge"
+    },
+    {
+      "critical_value": 1.642374415149818,
+      "df": 1,
+      "kept": true,
+      "lr_statistic": 1.7299846168573367,
+      "parameters": [
+        "winter_discharge"
+      ],
+      "term": "winter_discharge"
+    }
+  ],
+  "world": "tonmick-health"
+}

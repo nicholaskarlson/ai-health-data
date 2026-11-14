@@ -1,0 +1,67 @@
+{
+  "adoption": {
+    "never": 13,
+    "partial": 18,
+    "ramp_by_live_week": [
+      0.35,
+      0.55,
+      0.7,
+      0.82,
+      0.91,
+      0.96
+    ],
+    "selection": "types dealt by rank of weight * standardised log baseline documentation time + standard normal noise",
+    "weight_on_baseline_doc": 0.9
+  },
+  "after_hours_minutes": {
+    "relative_effect_at_full_use": -0.2,
+    "rule": "multiplied by 1 + effect * learning * share of visits that used the scribe"
+  },
+  "documentation_minutes": {
+    "full_effect_from_live_week": 8,
+    "learning_by_live_week": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.625,
+      0.75,
+      0.875
+    ],
+    "rule": "minutes per visit fall by the clinician's saving times the learning share times the share of visits that used the scribe",
+    "saving_per_scribe_visit_mean": 2.0,
+    "saving_per_scribe_visit_sd": 0.6,
+    "trend_per_week": -0.02
+  },
+  "holiday_weeks": {
+    "2025-05-26": 0.8,
+    "2025-06-30": 0.8,
+    "2025-09-01": 0.8,
+    "2025-11-24": 0.6,
+    "2025-12-22": 0.55,
+    "2025-12-29": 0.6
+  },
+  "note": "True effects of the scribe in the clinician-week panel. Each clinician's own values are in clinician_truth.csv, and the paired no-scribe values for every clinician-week are in clinician_weeks_truth.csv. Simulator truth: never evidence.",
+  "same_day_close": {
+    "logit_effect_at_full_use": 0.5
+  },
+  "survey_response": {
+    "intercept": 0.413232,
+    "slope_on_latent_wellbeing": 0.7,
+    "solved_for_mean_response": 0.62
+  },
+  "visits": {
+    "added_per_week_at_full_use": 0.4,
+    "rule": "Poisson mean rises by effect * learning * expected scribe share; one uniform draw read at both means"
+  },
+  "wellbeing": {
+    "effect_mean_by_type": {
+      "adopter": 0.25,
+      "never": 0.0,
+      "partial": 0.08
+    },
+    "wave_drift_sd": 0.3,
+    "weight_on_baseline_doc": -0.35
+  },
+  "world": "tonmick-health"
+}

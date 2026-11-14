@@ -1,0 +1,101 @@
+{
+  "display": {
+    "2.0": {
+      "scale": 1.0,
+      "shift": 2.63
+    },
+    "3.0": {
+      "scale": 1.0,
+      "shift": 2.34
+    }
+  },
+  "ehr_flag": {
+    "false_positive": 0.004,
+    "miss": {
+      "death": 0.065,
+      "icu_transfer": 0.065,
+      "transfer_out": 0.18
+    }
+  },
+  "features": {
+    "encounters_cap": 8,
+    "hr_above": 90.0,
+    "lactate_above": 1.0,
+    "lactate_cap": 3.0,
+    "rr_above": 18.0,
+    "sbp_below": 110.0,
+    "spo2_below": 100.0,
+    "temp_above": 38.0,
+    "temp_below": 36.0
+  },
+  "lactate_imputed_when_missing": 1.0,
+  "note": "The vendor's formula, which a customer never sees. Simulator truth: never evidence. The score is a fixed transform of the vendor's risk, one for each version. Version 3.0 changes the intercept and slope of the risk logit and the transform.",
+  "response": {
+    "fall_per_month": 0.0075,
+    "floor": 0.7,
+    "risk_ratio": 0.8,
+    "start": 0.85
+  },
+  "threshold": 60,
+  "true_model": {
+    "age_per_10": 0.08,
+    "comorbidity": 0.04,
+    "confused": 0.45,
+    "drowsy": 0.3,
+    "dx": {
+      "copd": 0.1,
+      "diabetes": -0.15,
+      "gi": -0.1,
+      "heart_failure": 0.15,
+      "ortho_surgical": -0.4,
+      "pneumonia": 0.2,
+      "sepsis": 0.35,
+      "stroke": 0.15
+    },
+    "encounters": 0.24,
+    "facility_shift": {
+      "F06": 0.2
+    },
+    "hr_per_10": 0.12,
+    "instability": 0.05,
+    "intercept_solved_on": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05"
+    ],
+    "lactate_per_mmol": 0.85,
+    "o2_high_flow": 0.4,
+    "o2_low_flow": 0.15,
+    "rr_per_2": 0.38,
+    "sbp_per_10": 0.18,
+    "severity": 0.1,
+    "spo2_per_point": 0.34,
+    "temp_per_degree": 0.25,
+    "unmeasured_sd": 0.6,
+    "unresponsive": 1.1,
+    "winter": 0.06
+  },
+  "v2": {
+    "age_per_10": 0.06,
+    "confused": 0.3,
+    "drowsy": 0.2,
+    "encounters": 0.205,
+    "hr_per_10": 0.1,
+    "intercept": -5.75,
+    "lactate_per_mmol": 1.0,
+    "o2_high_flow": 0.35,
+    "o2_low_flow": 0.12,
+    "rr_per_2": 0.43,
+    "sbp_per_10": 0.15,
+    "spo2_per_point": 0.34,
+    "temp_per_degree": 0.2,
+    "unresponsive": 0.8
+  },
+  "v3": {
+    "intercept": -0.76,
+    "slope": 0.78
+  },
+  "world": "tonmick-health"
+}

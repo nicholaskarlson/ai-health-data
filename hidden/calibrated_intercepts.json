@@ -1,0 +1,41 @@
+{
+  "intercepts": {
+    "comfort_care": {
+      "intercept": -5.415807827875863,
+      "reference_mean": 0.028000000000000014,
+      "target": 0.028
+    },
+    "death": {
+      "intercept": -6.0084578789362,
+      "reference_mean": 0.017500000000000005,
+      "target": 0.0175
+    },
+    "deterioration": {
+      "intercept": -6.551476442116169,
+      "reference_mean": 0.03949999999999998,
+      "target": 0.0395
+    },
+    "icu": {
+      "intercept": -2.449100974316143,
+      "reference_mean": 0.15799999999999997,
+      "target": 0.158
+    },
+    "lactate_drawn": {
+      "intercept": -0.8543116697508106,
+      "reference_mean": 0.39999999999999997,
+      "target": 0.4
+    },
+    "readmission": {
+      "intercept": -3.1360357747618,
+      "reference_mean": 0.14299999999999996,
+      "target": 0.143
+    }
+  },
+  "note": "Intercepts solved by bisection on a reference cohort drawn from block 3 (calibration), so that the cohort mean equals the target. The day loop's population differs a little from the cohort; CHECKS.md tests the realised values. Simulator truth: never evidence.",
+  "reference_cohort_size": 60000,
+  "severity": {
+    "center": 0.6059515484183161,
+    "scale": 1.1488206858892853
+  },
+  "world": "tonmick-health"
+}

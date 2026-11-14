@@ -1,0 +1,8 @@
+role,hourly_wage,loaded_hourly_cost,source_note
+hospitalist,128.46,187.55,"US Bureau of Labor Statistics, Occupational Employment and Wage Statistics: general internal medicine physicians, national mean annual wage 267,200 over 2,080 hours, May 2025"
+it_analyst,50.89,74.30,"US Bureau of Labor Statistics, Occupational Employment and Wage Statistics: computer systems analysts, national median annual wage 105,850 over 2,080 hours, May 2025"
+manager,67.77,98.94,"US Bureau of Labor Statistics, Occupational Employment and Wage Statistics: medical and health services managers, national mean annual wage 140,970 over 2,080 hours, May 2025"
+np,66.01,96.37,"US Bureau of Labor Statistics, Occupational Employment and Wage Statistics: nurse practitioners, national mean annual wage 137,300 over 2,080 hours, May 2025"
+pa,67.92,99.16,"US Bureau of Labor Statistics, Occupational Employment and Wage Statistics: physician assistants, national mean annual wage 141,280 over 2,080 hours, May 2025"
+physician,122.99,179.57,"US Bureau of Labor Statistics, Occupational Employment and Wage Statistics: family medicine physicians, national mean annual wage 255,820 over 2,080 hours, May 2025"
+rn,48.76,71.19,"US Bureau of Labor Statistics, Occupational Employment and Wage Statistics: registered nurses, national mean annual wage 101,420 over 2,080 hours, May 2025"

@@ -1,0 +1,8 @@
+cost_line,unit,unit_cost,quantity,wage_role,quantity_basis,notes
+audit_adjudication,hour,,0.25,physician,hours for each round 3 rating in audit_ratings.csv,design choice
+audit_rating,hour,,0.20,physician,hours for each rating in rounds 1 and 2 of audit_ratings.csv,design choice
+committee,hour,,120.00,manager,"committee hours spent on the scribe review, in total",design choice
+implementation,one time,60000.00,1.00,,"once, before the first wave",invented price; design choice
+it_integration,hour,,480.00,it_analyst,"hours in total, before and during the rollout",design choice
+licence,clinician-month,275.00,,,count the calendar months in which a clinician has at least one scribe visit,invented price; public reporting puts ambient scribes at about 100 to 600 US dollars per clinician per month
+training,hour,,2.00,clinician,"hours for each clinician, at that clinician's own role in wage_rates.csv",design choice

@@ -1,0 +1,155 @@
+{
+  "c_statistics": {
+    "development_sample": {
+      "r30_observed_outcome": 0.7080348739136281,
+      "r30_true_outcome": 0.7018704535757742,
+      "true_probability_true_outcome": 0.7294821619514662
+    },
+    "reference_discharges": {
+      "r30_observed_outcome": 0.6788079286202108,
+      "r30_true_outcome": 0.6798085260444188,
+      "true_probability_observed_outcome": 0.732295149531793,
+      "true_probability_true_outcome": 0.7351290721914843
+    }
+  },
+  "noise_predictors": {
+    "weekend_discharge": 0.0,
+    "winter_discharge": 0.0
+  },
+  "note": "Simulator truth: never evidence. The true model is not of R30's form: it uses continuous age, stay and laboratory values, a hospital effect and two things no record holds, severity and frailty. It has no term for sex, day of the week or season, so the true effect of weekend_discharge and winter_discharge is zero. A fit of R30's form can still give either a small coefficient, because who leaves at a weekend or in winter differs in ways the form does not hold: that is confounding, not an effect.",
+  "reference_fit": {
+    "discharges": 28002,
+    "fits": {
+      "observed_outcome_network": {
+        "coefficients": {
+          "age_65_plus": 0.20063556018294978,
+          "comorbidity_count": 0.1855202208101112,
+          "disp_home_health": 0.16478046718087241,
+          "disp_snf": 0.24372211102016092,
+          "dx_cancer": 0.3185731761593307,
+          "dx_copd": 0.20204652782263294,
+          "dx_heart_failure": 0.35791769032804244,
+          "emergency": 0.49143148845052065,
+          "female": -0.045926257097147406,
+          "hemoglobin_low": 0.17687432677057785,
+          "intercept": -3.650978328822948,
+          "los_over_5": 0.3925661075630352,
+          "medicaid": 0.3185751490366451,
+          "prior_admits_1": 0.4224226020553094,
+          "prior_admits_2_plus": 0.800379765173266,
+          "sodium_low": 0.1279017052375082,
+          "weekend_discharge": 0.08250566867740601,
+          "winter_discharge": 0.01925445599229636
+        },
+        "standard_errors": {
+          "age_65_plus": 0.04721057094242019,
+          "comorbidity_count": 0.00995527143589521,
+          "disp_home_health": 0.05207573744227179,
+          "disp_snf": 0.051616140644687517,
+          "dx_cancer": 0.07429881488227504,
+          "dx_copd": 0.07329357983831794,
+          "dx_heart_failure": 0.06713317670263332,
+          "emergency": 0.0535338384349629,
+          "female": 0.03942377755303468,
+          "hemoglobin_low": 0.04182288420205332,
+          "intercept": 0.06748736312715248,
+          "los_over_5": 0.04102302071818748,
+          "medicaid": 0.05422233384354438,
+          "prior_admits_1": 0.047867825795961,
+          "prior_admits_2_plus": 0.0630052762559565,
+          "sodium_low": 0.057073185442632804,
+          "weekend_discharge": 0.04178485087190259,
+          "winter_discharge": 0.043201989275130546
+        }
+      },
+      "true_outcome_any_hospital": {
+        "coefficients": {
+          "age_65_plus": 0.19963545024331622,
+          "comorbidity_count": 0.18892770026240976,
+          "disp_home_health": 0.20672163067570415,
+          "disp_snf": 0.2831038963256403,
+          "dx_cancer": 0.297638776926248,
+          "dx_copd": 0.22608268639368737,
+          "dx_heart_failure": 0.3722337563525947,
+          "emergency": 0.5233167271781572,
+          "female": -0.04062233583795507,
+          "hemoglobin_low": 0.18421716731487672,
+          "intercept": -3.5143664616670343,
+          "los_over_5": 0.4012082711601052,
+          "medicaid": 0.37245888766315116,
+          "prior_admits_1": 0.42822543043478745,
+          "prior_admits_2_plus": 0.8115089567039603,
+          "sodium_low": 0.10267842681041293,
+          "weekend_discharge": 0.09068822452815535,
+          "winter_discharge": 0.01640118506790703
+        },
+        "standard_errors": {
+          "age_65_plus": 0.04407116159602784,
+          "comorbidity_count": 0.009426728005238798,
+          "disp_home_health": 0.048634242236343904,
+          "disp_snf": 0.0484583229922053,
+          "dx_cancer": 0.07028232002527234,
+          "dx_copd": 0.06854800981320754,
+          "dx_heart_failure": 0.06336077245342883,
+          "emergency": 0.049958781838376924,
+          "female": 0.03689133760807482,
+          "hemoglobin_low": 0.03920233601884884,
+          "intercept": 0.06320305057494703,
+          "los_over_5": 0.03827760816892509,
+          "medicaid": 0.05022768612902149,
+          "prior_admits_1": 0.04493899931761416,
+          "prior_admits_2_plus": 0.06033751700244146,
+          "sodium_low": 0.054005632955212074,
+          "weekend_discharge": 0.039088676908901394,
+          "winter_discharge": 0.04042033869636791
+        }
+      }
+    },
+    "what": "All 17 parameters of R30's form, with no screen, fitted to every eligible discharge from 2023-01-01 to 2023-12-31 at F01, F02, F03, F04, F05, once on the true outcome and once on the observed one. These are what the form gives with about sixteen times the development sample."
+  },
+  "true_model": {
+    "hospital_effects_logit": {
+      "F01": -0.24863657941931175,
+      "F02": 0.18133972135494364,
+      "F03": 0.18609246082246644,
+      "F04": -0.04973493385848199,
+      "F05": -0.054618903566044985,
+      "F06": -0.014441765333571388
+    },
+    "logit_terms": {
+      "age_per_year": 0.008,
+      "comorbidity": 0.11,
+      "disposition": {
+        "home_health": 0.12,
+        "snf": 0.15
+      },
+      "dx": {
+        "cancer": 0.3,
+        "copd": 0.27,
+        "heart_failure": 0.35,
+        "ortho_surgical": -0.35,
+        "renal": 0.18,
+        "sepsis": 0.1,
+        "stroke": -0.05
+      },
+      "emergency": 0.2,
+      "frailty": 0.34,
+      "gap_weight_offset": 6,
+      "hemoglobin_below_12_per_g": 0.07,
+      "log_los": 0.18,
+      "payer": {
+        "medicaid": 0.38,
+        "medicare": 0.12,
+        "self_pay": 0.22
+      },
+      "prior_admits": 0.26,
+      "prior_admits_cap": 4,
+      "same_facility": 0.85,
+      "severity": 0.08,
+      "sodium_below_138_per_mmol": 0.03
+    },
+    "solved_intercept": -3.1360357747618
+  },
+  "worklist_effect_on_readmission": 0.0,
+  "world": "tonmick-health"
+}

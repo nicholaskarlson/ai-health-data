@@ -1,0 +1,61 @@
+{
+  "built": "2022-12",
+  "built_by": "Tonmick Health clinical analytics team",
+  "candidate_terms": {
+    "age_65_plus": "Age 65 or over at admission",
+    "comorbidity_count": "Comorbidity count, as a number",
+    "disp_home_health": "Discharged home with home health",
+    "disp_snf": "Discharged to skilled nursing",
+    "dx_cancer": "Diagnosis group cancer",
+    "dx_copd": "Diagnosis group COPD or respiratory",
+    "dx_heart_failure": "Diagnosis group heart failure",
+    "emergency": "Emergency admission",
+    "female": "Recorded sex female",
+    "hemoglobin_low": "Admission hemoglobin below 12; not low if not measured",
+    "los_over_5": "Length of stay over 5 days",
+    "medicaid": "Payer is Medicaid",
+    "prior_admits": "Network admissions in the 12 months before this one: one, or two or more, against none",
+    "sodium_low": "Admission sodium below 135; not low if not measured",
+    "weekend_discharge": "Discharged on a Saturday or Sunday",
+    "winter_discharge": "Discharged in December, January or February"
+  },
+  "coefficients": {
+    "age_65_plus": -0.091593,
+    "comorbidity_count": 0.226211,
+    "disp_home_health": 0.182945,
+    "disp_snf": 0.380414,
+    "dx_heart_failure": 0.488061,
+    "hemoglobin_low": 0.125943,
+    "intercept": -3.191717,
+    "los_over_5": 0.19766,
+    "prior_admits_1": 0.12732,
+    "prior_admits_2_plus": 0.569432,
+    "sodium_low": 0.77778,
+    "weekend_discharge": 0.260369,
+    "winter_discharge": -0.254083
+  },
+  "development_population": "Medicine-service discharges from Tonmick University Medical Center, 1 January to 30 June 2022, with a complete admission laboratory panel (sodium, creatinine, hemoglobin, white cell count, lactate). Each patient's first such discharge in the period.",
+  "development_sample": {
+    "discharges": 1725,
+    "readmissions": 217
+  },
+  "eligible_discharges": "Alive, to home, home with home health, or skilled nursing. Not deaths, hospice, discharges against advice or transfers.",
+  "fictional": "Tonmick Health and this model are invented. Nothing here describes a real hospital, team or model.",
+  "intended_use": "Rank adult discharges by risk of an unplanned readmission within 30 days, so that discharge planners can follow up the highest first. Shown on the discharge-planning worklist at every hospital from 2023-02-01.",
+  "method": "Each candidate term was tested alone in a logistic model and kept when p < 0.20 on a likelihood-ratio test. The terms kept were then fitted together. Risk is the logistic function of the intercept plus the sum of coefficient times value.",
+  "missing_values": "In production a laboratory value that was not measured counts as not low.",
+  "model": "Tonmick R30",
+  "outcome": "An unplanned admission to a Tonmick Health hospital within 30 days of discharge. A return flagged as planned does not count.",
+  "reported_performance": {
+    "basis": "Calculated on the development sample",
+    "c_statistic": 0.708
+  },
+  "terms_dropped_by_the_screen": [
+    "female",
+    "medicaid",
+    "dx_cancer",
+    "dx_copd",
+    "emergency"
+  ],
+  "validation": "None beyond the development sample."
+}

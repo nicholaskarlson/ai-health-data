@@ -1,0 +1,90 @@
+log_id,effective_date,lab_site,facilities,test_area,change_type,description
+L0001,2022-01-27,central,F01;F02;F03,blood_gas,quality_control,Blood gas analyser failed its daily check. Cartridge replaced; check passed.
+L0002,2022-01-28,northfen,F04,general,quality_control,External quality assessment results received. All analytes acceptable.
+L0003,2022-02-10,pellow_lake,F05,microbiology,reagent_lot,New lot of blood culture bottles in use.
+L0004,2022-02-28,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0005,2022-04-01,central,F01;F02;F03,coagulation,reagent_lot,New thromboplastin lot. Reference values rechecked; no change.
+L0006,2022-04-04,central,F01;F02;F03,hematology,quality_control,Platelet control flagged once. Rerun in range.
+L0007,2022-04-07,central,F01;F02;F03,hematology,quality_control,Platelet control flagged once. Rerun in range.
+L0008,2022-06-20,central,F01;F02;F03,general,quality_control,External quality assessment results received. All analytes acceptable.
+L0009,2022-06-27,pellow_lake,F05,chemistry,calibration,Six-monthly calibration of the main chemistry line. Controls in range.
+L0010,2022-06-29,central,F01;F02;F03,microbiology,reagent_lot,New lot of blood culture bottles in use.
+L0011,2022-07-05,central,F01;F02;F03,general,software,Laboratory information system patch applied overnight. Interfaces checked.
+L0012,2022-07-09,pellow_lake,F05,microbiology,reagent_lot,New lot of blood culture bottles in use.
+L0013,2022-07-18,northfen,F04,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0014,2022-08-18,central,F01;F02;F03,coagulation,reagent_lot,New thromboplastin lot. Reference values rechecked; no change.
+L0015,2022-09-12,central,F01;F02;F03,immunoassay,method_change,Troponin moved to the high-sensitivity method. Clinical teams notified; new reference interval issued.
+L0016,2022-09-18,central,F01;F02;F03,general,reference_interval,Annual review of reference intervals. No changes.
+L0017,2022-09-23,central,F01;F02;F03,general,reference_interval,Annual review of reference intervals. No changes.
+L0018,2022-10-16,central,F01;F02;F03,general,software,Laboratory information system patch applied overnight. Interfaces checked.
+L0019,2022-12-19,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0020,2022-12-26,central,F01;F02;F03,coagulation,reagent_lot,New thromboplastin lot. Reference values rechecked; no change.
+L0021,2023-01-02,northfen,F04,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0022,2023-01-26,pellow_lake,F05,chemistry,quality_control,Glucose control out of range on the night shift. Rerun in range; no patient results held.
+L0023,2023-01-30,central,F01;F02;F03,hematology,quality_control,Platelet control flagged once. Rerun in range.
+L0024,2023-02-14,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0025,2023-03-11,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for liver enzymes. Lot-to-lot check within limits.
+L0026,2023-03-19,central,F01;F02;F03,microbiology,maintenance,Blood culture incubator serviced. No samples affected.
+L0027,2023-03-22,central,F01;F02;F03,hematology,calibration,Blood count analyser calibrated after service. Controls in range.
+L0028,2023-04-02,central,F01;F02;F03,microbiology,reagent_lot,New lot of blood culture bottles in use.
+L0029,2023-04-02,northfen,F04,general,quality_control,External quality assessment results received. All analytes acceptable.
+L0030,2023-04-09,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for liver enzymes. Lot-to-lot check within limits.
+L0031,2023-05-08,northfen,F04,hematology,method_change,Blood count analyser replaced with the current model. Comparison study complete.
+L0032,2023-05-18,pellow_lake,F05,chemistry,calibration,Six-monthly calibration of the main chemistry line. Controls in range.
+L0033,2023-05-24,pellow_lake,F05,general,quality_control,External quality assessment results received. All analytes acceptable.
+L0034,2023-05-28,central,F01;F02;F03,hematology,reagent_lot,New reagent lot for the blood count analyser. Lot-to-lot check within limits.
+L0035,2023-06-19,northfen,F04,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0036,2023-07-21,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for liver enzymes. Lot-to-lot check within limits.
+L0037,2023-08-26,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0038,2023-10-03,northfen,F04,hematology,maintenance,Blood count analyser serviced. Samples run on the second analyser meanwhile.
+L0039,2023-10-06,central,F01;F02;F03,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0040,2023-10-10,northfen,F04,point_of_care,quality_control,Ward glucose meters: quarterly comparison with the laboratory. All within limits.
+L0041,2023-10-14,northfen,F04,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0042,2023-11-14,central,F01;F02;F03,point_of_care,quality_control,Ward glucose meters: quarterly comparison with the laboratory. All within limits.
+L0043,2023-12-05,pellow_lake,F05,general,software,Laboratory information system patch applied overnight. Interfaces checked.
+L0044,2023-12-09,central,F01;F02;F03,general,reference_interval,Annual review of reference intervals. No changes.
+L0045,2023-12-28,pellow_lake,F05,coagulation,reagent_lot,New thromboplastin lot. Reference values rechecked; no change.
+L0046,2024-03-01,central,F01;F02;F03,chemistry,method_change,Lactate moved to the enzymatic method on the main chemistry line. Verification complete. Reference interval unchanged.
+L0047,2024-03-11,pellow_lake,F05,point_of_care,quality_control,Ward glucose meters: quarterly comparison with the laboratory. All within limits.
+L0048,2024-04-12,central,F01;F02;F03,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0049,2024-05-23,central,F01;F02;F03,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0050,2024-06-12,central,F01;F02;F03,chemistry,calibration,Potassium recalibrated after a control drift. Controls in range afterwards.
+L0051,2024-09-12,northfen,F04,hematology,quality_control,Platelet control flagged once. Rerun in range.
+L0052,2024-09-14,central,F01;F02;F03,chemistry,calibration,Six-monthly calibration of the main chemistry line. Controls in range.
+L0053,2024-09-16,northfen,F04,immunoassay,calibration,Immunoassay analyser calibrated after a lot change. Controls in range.
+L0054,2024-10-25,central,F01;F02;F03,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0055,2024-11-18,sallowfield,F06,general,software,Laboratory moved onto the network's laboratory information system. Test codes mapped.
+L0056,2024-12-24,central,F01;F02;F03,point_of_care,quality_control,Ward glucose meters: quarterly comparison with the laboratory. All within limits.
+L0057,2024-12-27,sallowfield,F06,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0058,2025-01-08,central,F01;F02;F03,chemistry,maintenance,Planned maintenance on the main chemistry line. Backup line used for four hours.
+L0059,2025-01-23,sallowfield,F06,point_of_care,software,Ward glucose meters updated to the current software. Operator list reloaded.
+L0060,2025-02-02,sallowfield,F06,general,software,Laboratory information system patch applied overnight. Interfaces checked.
+L0061,2025-02-17,central,F01;F02;F03,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0062,2025-02-24,sallowfield,F06,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0063,2025-03-07,northfen,F04,hematology,maintenance,Blood count analyser serviced. Samples run on the second analyser meanwhile.
+L0064,2025-03-21,northfen,F04,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0065,2025-05-04,central,F01;F02;F03,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0066,2025-06-02,central,F01;F02;F03,coagulation,method_change,Coagulation analyser replaced. Comparison study complete; reference values unchanged.
+L0067,2025-06-09,central,F01;F02;F03,general,reference_interval,Annual review of reference intervals. No changes.
+L0068,2025-06-14,central,F01;F02;F03,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0069,2025-08-16,central,F01;F02;F03,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0070,2025-08-23,pellow_lake,F05,point_of_care,quality_control,Ward glucose meters: quarterly comparison with the laboratory. All within limits.
+L0071,2025-09-02,pellow_lake,F05,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0072,2025-10-09,central,F01;F02;F03,hematology,calibration,Blood count analyser calibrated after service. Controls in range.
+L0073,2025-11-22,northfen,F04,general,quality_control,External quality assessment results received. All analytes acceptable.
+L0074,2025-11-30,pellow_lake,F05,chemistry,calibration,Six-monthly calibration of the main chemistry line. Controls in range.
+L0075,2025-12-08,central,F01;F02;F03,general,software,Laboratory information system patch applied overnight. Interfaces checked.
+L0076,2025-12-18,central,F01;F02;F03,chemistry,calibration,Potassium recalibrated after a control drift. Controls in range afterwards.
+L0077,2026-01-01,pellow_lake,F05,microbiology,reagent_lot,New lot of blood culture bottles in use.
+L0078,2026-01-25,sallowfield,F06,chemistry,calibration,Potassium recalibrated after a control drift. Controls in range afterwards.
+L0079,2026-01-26,pellow_lake,F05,chemistry,reagent_lot,New reagent lot for the basic metabolic panel. Lot-to-lot check within limits.
+L0080,2026-01-28,central,F01;F02;F03,blood_gas,maintenance,Blood gas analyser cartridge replaced ahead of schedule.
+L0081,2026-03-03,central,F01;F02;F03,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0082,2026-03-04,sallowfield,F06,coagulation,reagent_lot,New thromboplastin lot. Reference values rechecked; no change.
+L0083,2026-03-11,pellow_lake,F05,point_of_care,quality_control,Ward glucose meters: quarterly comparison with the laboratory. All within limits.
+L0084,2026-04-20,pellow_lake,F05,general,quality_control,External quality assessment results received. All analytes acceptable.
+L0085,2026-04-30,central,F01;F02;F03,chemistry,calibration,Potassium recalibrated after a control drift. Controls in range afterwards.
+L0086,2026-05-05,central,F01;F02;F03,general,staffing,Evening phlebotomy round moved one hour earlier.
+L0087,2026-06-05,central,F01;F02;F03,immunoassay,reagent_lot,New reagent lot for thyroid tests. Lot-to-lot check within limits.
+L0088,2026-06-11,central,F01;F02;F03,coagulation,calibration,Coagulation analyser calibrated. Controls in range.
+L0089,2026-06-14,pellow_lake,F05,hematology,quality_control,Platelet control flagged once. Rerun in range.

@@ -1,0 +1,54 @@
+{
+  "clinic_effect_logit_sd": 0.25,
+  "edit_minutes": {
+    "base": 0.8,
+    "formula": "(base + per_error * errors + per_visit_minute * visit_minutes) * noise",
+    "gamma_shape": 3.0,
+    "noise": "gamma with the given shape, mean 1",
+    "per_error": 0.5,
+    "per_visit_minute": 0.02
+  },
+  "errors_in_a_note_that_has_one": "1 + Poisson(0.35)",
+  "intercepts": {
+    "hallucination": -2.122188,
+    "misattribution": -2.578544,
+    "omission": -1.702468,
+    "wrong_value": -2.927458
+  },
+  "lenient_rater": "R05",
+  "log_odds_ratios": {
+    "hallucination_v24": -0.356675,
+    "misattribution_three_speakers": 0.470004,
+    "omission_interpreter": 0.587787,
+    "omission_long_visit": 0.405465
+  },
+  "long_visit_is_more_than_minutes": 30,
+  "many_speakers_is_at_least": 3,
+  "note": "The true model behind hidden/scribe/note_errors_truth.csv. For each kind of error, the chance that a note has at least one is plogis(intercept + the clinic's error_effect_logit + the log odds ratios that apply). Intercepts were solved by bisection on the version 2.3 notes. Simulator truth: never evidence.",
+  "odds_ratios": {
+    "hallucination_v24": 0.7,
+    "misattribution_three_speakers": 1.6,
+    "omission_interpreter": 1.8,
+    "omission_long_visit": 1.5
+  },
+  "rater_rules": {
+    "false_alarm_minor": 0.85,
+    "flag": "sensitivity if the note truly has that kind of error, else the false-positive rate",
+    "severity_agree": 0.75,
+    "severity_one_lower": 0.17
+  },
+  "severity": {
+    "major_per_error": 0.02723,
+    "major_per_error_logit": -3.575826,
+    "moderate_or_worse_per_error": 0.3,
+    "rule": "worst severity over the note's errors, from one uniform draw per note",
+    "solved_for_version_2_3_share_with_a_major_error": 0.015
+  },
+  "solved_for_version_2_3_rate": {
+    "hallucination": 0.105,
+    "misattribution": 0.085,
+    "omission": 0.17,
+    "wrong_value": 0.05
+  },
+  "world": "tonmick-health"
+}

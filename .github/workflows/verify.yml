@@ -1,0 +1,30 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install pinned packages
+        run: pip install -r requirements.txt
+      - name: Committed files match SHA256SUMS
+        run: |
+          sha256sum -c --quiet SHA256SUMS
+          echo "hashes OK, $(wc -l < SHA256SUMS) files"
+      - name: Regenerate the world from its seed and compare
+        run: python3 generator/verify_world.py
+      - name: Tests
+        run: python3 -m unittest discover -s tests -v
