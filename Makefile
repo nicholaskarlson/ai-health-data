@@ -8,10 +8,9 @@ LABS := $(sort $(notdir $(wildcard labs/ch*_*)))
 # Everything a reader can check, in order. Needs R for the last two.
 all: hashes verify test labs crosscheck
 
-# The files on disk are the frozen ones.
+# The files on disk are the frozen ones. Python only, so it runs where sha256sum is absent.
 hashes:
-	sha256sum -c --quiet SHA256SUMS
-	@echo "hashes OK. A matching hash confirms file identity only."
+	$(PY) tests/check_hashes.py
 
 # Rebuild the whole world from its seed in a temporary folder and compare. Changes nothing.
 verify:

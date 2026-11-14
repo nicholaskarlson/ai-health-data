@@ -58,6 +58,26 @@ class TestFrozenWorld(unittest.TestCase):
                 on_disk += [os.path.relpath(os.path.join(base, f), ROOT).replace(os.sep, "/") for f in files]
         self.assertEqual(sorted(on_disk), sorted(p for p in here if p.startswith(("data/", "hidden/"))))
 
+    def test_check_hashes_passes_here_and_fails_on_a_changed_or_missing_file(self):
+        script = [sys.executable, os.path.join(ROOT, "tests", "check_hashes.py")]
+        done = subprocess.run(script, capture_output=True, text=True)
+        self.assertEqual(done.returncode, 0, done.stdout)
+        self.assertIn("53 files listed, 53 match, 0 differ, 0 missing.", done.stdout)
+        with tempfile.TemporaryDirectory(prefix="ai-health-data-") as tmp:
+            for name, text in (("same.txt", "one\n"), ("changed.txt", "two\n")):
+                with open(os.path.join(tmp, name), "w", encoding="utf-8", newline="\n") as fh:
+                    fh.write(text)
+            lines = [f"{sha256(os.path.join(tmp, 'same.txt'))}  same.txt",
+                     f"{'0' * 64}  changed.txt",
+                     f"{'0' * 64}  absent.txt"]
+            with open(os.path.join(tmp, "SHA256SUMS"), "w", encoding="utf-8", newline="\n") as fh:
+                fh.write("\n".join(lines) + "\n")
+            done = subprocess.run(script + [tmp], capture_output=True, text=True)
+            self.assertEqual(done.returncode, 1, done.stdout)
+            self.assertIn("DIFFERS  changed.txt", done.stdout)
+            self.assertIn("MISSING  absent.txt", done.stdout)
+            self.assertIn("3 files listed, 1 match, 1 differ, 1 missing.", done.stdout)
+
     def test_the_world_documents_are_unchanged(self):
         frozen = sums("FROZEN_SHA256SUMS")
         for name in ("BACKSTORY.md", "WORLD_SPEC.md", "PROVENANCE.md", "BOOK_MAP.md"):
@@ -72,7 +92,7 @@ class TestLabRules(unittest.TestCase):
                 self.assertTrue(os.path.exists(os.path.join(LABS, folder, part)), f"{folder}/{part}")
 
     def test_an_analysis_never_opens_hidden(self):
-        """lab.py, lab.R and the shared functions read data/ only. Only answer_key.py may
+        """lab.py and lab.R read data/ only (comments and docstrings aside). Only answer_key.py may
         open hidden/, and it must do so."""
         for folder in lab_folders():
             for part in ("lab.py", "lab.R"):

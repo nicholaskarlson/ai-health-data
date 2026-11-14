@@ -63,7 +63,19 @@ python3 labs/ch07_does_it_perform_as_claimed/lab.py          # the analysis, fro
 python3 labs/ch07_does_it_perform_as_claimed/answer_key.py   # how close it came, and why
 ```
 
-Python 3.13 is what the hashes were made with. Base R is enough for the R side; no package is needed.
+Without `make`, run what each target runs:
+
+```bash
+python3 tests/check_hashes.py                  # make hashes
+python3 generator/verify_world.py              # make verify
+python3 -m unittest discover -s tests -v       # make test
+```
+
+What you need, and what has been tried:
+
+- **Python 3.12 or later,** which numpy 2.5.3 requires. The hashes were made with Python 3.13, and that is the only version `make verify` has been run on.
+- **R is optional.** Base R is enough for the R side; no package is needed. It has been run on R 4.1.2.
+- **Linux is the only system this has been run on.** macOS and Windows should work and have not been tried. On Windows, `make` needs WSL or Git Bash; the three commands above need neither, with `python` in place of `python3`.
 
 ## Labs
 
@@ -78,7 +90,7 @@ Labs arrive with the chapters. Each has the same five parts as its chapter: the 
 
 - **It is synthetic and it was tuned.** Target ranges and planted mechanisms were written down first; the generator was then built and adjusted until the checks passed. `docs/PROVENANCE.md` says what was fixed in advance, what was adjusted, and which target ranges were replaced, three of them after the value was seen. Passing its own checks is not evidence of realism.
 - **Real figures are cited where they were used,** with the date each source was seen, in `docs/PROVENANCE.md` section 6. Everything else is labelled a design choice.
-- **It is reproducible.** The same 53 files came out byte for byte on three machines, and Python and R agree on 104 statistics computed from them. A matching hash confirms file identity only.
+- **It is reproducible.** The same 53 files came out byte for byte on three machines, all running Linux, and Python and R agree on 104 statistics computed from them. A matching hash confirms file identity only.
 - **An AI model wrote the code.** The generator, checks, tests and documents were written by Claude, an AI model made by Anthropic, to the author's written brief. The author ran every command and approved every milestone. `docs/NOTES_ON_THE_SOURCE.md` has the detail.
 - **It is frozen.** These files are version 1.0.0 of the Tonmick Health world and will not change. Anything new will be added beside them.
 

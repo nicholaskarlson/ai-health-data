@@ -443,28 +443,28 @@ SECONDARY_TARGETS = [
 ]
 
 # --------------------------------------------------------------------------
-# Variance V6, proposed at Milestone 4 (DESIGN.md section 15, decision A31).
+# Variance V6, set at Milestone 4 (DESIGN.md section 15, decision A31).
 # Two R30 targets cannot hold together with the rest: with about 230 events and
 # 17 candidate parameters, a model of this form does not reach an apparent
 # C-statistic of 0.73 while the true model itself reaches only 0.72 (T13), and
 # its overfitting is too mild for a validation slope below 0.85. DESIGN.md risk
 # R2 foresaw this at Milestone 0. The ranges below were set AFTER the values
 # were seen, so they test nothing; they only guard against later drift.
-# CHECKS.md prints the brief's range beside each. Nick accepts V6 by applying
-# the Milestone 4 overlay, or says no and the model is rebuilt.
+# CHECKS.md prints the brief's range beside each. Nick approved V6 in writing
+# on 13 November 2026, before the freeze (PROVENANCE.md, Milestone 7).
 # --------------------------------------------------------------------------
 VARIANCE_V6 = {"T41": (0.69, 0.73), "T43": (0.80, 0.94)}
 
 # --------------------------------------------------------------------------
-# Variance V7, proposed at Milestone 5 (DESIGN.md section 15, decision A41).
+# Variance V7, set at Milestone 5 (DESIGN.md section 15, decision A41).
 # The brief gives the raters a sensitivity of 0.70 to 0.92, one lenient rater
 # near 0.60 and a false-positive rate of 0.01 to 0.05. With hallucinations in
 # about 9% of audited notes, those figures put the expected kappa between two
 # raters at about 0.53, under the brief's own range of 0.55 to 0.75. The rater
 # figures are kept as the brief wrote them, and the range for kappa moves.
 # It was set AFTER the value was seen, so it tests nothing. CHECKS.md prints
-# the brief's range beside it. Nick accepts V7 by applying the Milestone 5
-# overlay, or says no and the raters are redrawn from narrower ranges.
+# the brief's range beside it. Nick approved V7 in writing on 13 November
+# 2026, before the freeze (PROVENANCE.md, Milestone 7).
 # --------------------------------------------------------------------------
 VARIANCE_V7 = {"T57": (0.45, 0.65)}
 VARIANCES = {"V6": VARIANCE_V6, "V7": VARIANCE_V7}
