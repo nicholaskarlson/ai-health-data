@@ -20,6 +20,7 @@ LABS = os.path.join(ROOT, "labs")
 sys.path.insert(0, LABS)
 
 import numpy as np            # noqa: E402
+import pandas as pd           # noqa: E402
 
 import common                 # noqa: E402
 
@@ -275,6 +276,113 @@ class TestChapter6(unittest.TestCase):
         self.assertEqual(done.returncode, 0, done.stderr)
         self.assertIn("events prevented: 44", done.stdout)
         self.assertIn("the same outcome either way for 12,030 of 12,030 encounters", done.stdout)
+
+
+class TestChapter2(unittest.TestCase):
+    FOLDER = os.path.join(LABS, "ch02_a_hospital_where_the_truth_is_known")
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory(prefix="ai-health-data-")
+        out = os.path.join(cls.tmp.name, "ch02_python.csv")
+        done = subprocess.run([sys.executable, os.path.join(cls.FOLDER, "lab.py"), out],
+                              capture_output=True, text=True, cwd=ROOT)
+        assert done.returncode == 0, done.stderr
+        with open(out, encoding="utf-8", newline="") as fh:
+            cls.results = dict(list(csv.reader(fh))[1:])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def by_hand(self):
+        with open(os.path.join(self.FOLDER, "by_hand.csv"), encoding="utf-8", newline="") as fh:
+            return list(csv.DictReader(fh))
+
+    def test_by_hand_extract_is_real_data(self):
+        """Each row is a 2023 discharge as the admission files hold it, and the next admission
+        named beside it is the same person's next admission in the data, or none."""
+        rows = self.by_hand()
+        self.assertEqual(len(rows), 20)
+        adm = pd.concat([common.read(f"data/inpatient/admissions_{y}.csv") for y in range(2022, 2027)],
+                        ignore_index=True)
+        adm = adm[adm["person_id"].isin([r["person_id"] for r in rows])]
+        adm = adm.sort_values(["person_id", "admit_datetime"], kind="mergesort")
+        by_person = {person: group for person, group in adm.groupby("person_id")}
+        for row in rows:
+            stays = by_person[row["person_id"]]
+            here = stays[stays["encounter_id"] == row["encounter_id"]].iloc[0]
+            for column in ("facility_id", "discharge_date", "disposition"):
+                self.assertEqual(here[column], row[column], row["encounter_id"])
+            later = stays[stays["admit_datetime"] > here["admit_datetime"]]
+            if len(later):
+                self.assertEqual(later.iloc[0]["admit_datetime"][:10], row["next_admit_date"])
+                self.assertEqual(later.iloc[0]["planned_admission"], row["next_planned_admission"])
+            else:
+                self.assertEqual((row["next_admit_date"], row["next_planned_admission"]), ("", ""))
+
+    def test_by_hand_readmissions(self):
+        """The pencil exercise in the lab's README: 16 of the 20 discharges count; 4 are
+        readmissions, 4 are planned returns within 30 days, 4 return later and 4 never return."""
+        counted = [r for r in self.by_hand() if r["disposition"] in ("home", "home_health", "snf")]
+        gaps = []
+        for r in counted:
+            if r["next_admit_date"]:
+                gap = (pd.Timestamp(r["next_admit_date"]) - pd.Timestamp(r["discharge_date"])).days
+                gaps.append((gap, r["next_planned_admission"]))
+            else:
+                gaps.append((None, ""))
+        soon = [p for g, p in gaps if g is not None and 1 <= g <= 30]
+        self.assertEqual(len(counted), 16)
+        self.assertEqual((soon.count("0"), soon.count("1")), (4, 4))
+        self.assertEqual(sum(g is not None and g > 30 for g, _p in gaps), 4)
+        self.assertEqual(sum(g is None for g, _p in gaps), 4)
+
+    def test_the_lab_reproduces_the_frozen_checks(self):
+        """CHECKS.md was written by the generator's own check script, with different code.
+        The lab's headline figures must equal its inpatient rows as printed, and its
+        readmission rate the row T11."""
+        rows = {}
+        with open(os.path.join(ROOT, "CHECKS.md"), encoding="utf-8") as fh:
+            for line in fh:
+                cells = [c.strip() for c in line.split("|")]
+                if len(cells) > 3 and re.match(r"[ST]\d\d[a-e]? ", cells[1]):
+                    rows[cells[1].split(" ")[0]] = cells[2]
+        r = {k.replace("ch02.", ""): v for k, v in self.results.items()}
+
+        def four(name):
+            return f"{float(r[name]):.4f}"
+
+        self.assertEqual(rows["T01"], f"{int(r['n.admissions']):,}")
+        self.assertEqual((rows["T02"], rows["T02b"], rows["T02c"]),
+                         tuple(f"{float(r[k]):g}" for k in ("stat.age_median", "stat.age_lower_quartile",
+                                                            "stat.age_upper_quartile")))
+        self.assertEqual(rows["T03"], four("stat.female_share"))
+        for check, payer in (("T04", "medicare"), ("T04b", "medicaid"), ("T04c", "commercial"), ("T04d", "self_pay")):
+            self.assertEqual(rows[check], four(f"stat.{payer}_share"))
+        self.assertEqual(rows["T04e"], four("stat.f06_medicare_share"))
+        self.assertEqual(rows["T06"], four("stat.emergency_share"))
+        self.assertTrue(rows["T07"].startswith(four("stat.winter_ratio") + " "), rows["T07"])
+        self.assertEqual(rows["T08"], f"{float(r['stat.los_median']):.1f}")
+        self.assertEqual(rows["T08b"], four("stat.death_share"))
+        self.assertEqual(rows["T09"], four("stat.lactate_drawn_share"))
+        self.assertTrue(rows["T09b"].startswith(f"in intensive care at 12 hours {float(r['stat.lactate_drawn_icu']):.3f}, "
+                                                f"others {float(r['stat.lactate_drawn_not_icu']):.3f};"), rows["T09b"])
+        self.assertTrue(rows["T11"].startswith(four("stat.readmission_2023") + ","), rows["T11"])
+        self.assertTrue(rows["S13"].startswith(f"{int(r['n.open_stays'])} open stays"), rows["S13"])
+        self.assertEqual(r["n.index_2023"], "28002")
+        self.assertEqual(sum(int(r[f"n.index_2023_{p}"]) for p in ("medicare", "medicaid", "commercial", "self_pay")),
+                         28002)
+
+    def test_the_answer_key_runs(self):
+        """It finds the rule exact against the simulator's network readmissions, and prints
+        CHECKS.md rows T10 and T12 as they stand."""
+        done = subprocess.run([sys.executable, os.path.join(self.FOLDER, "answer_key.py")],
+                              capture_output=True, text=True, cwd=ROOT)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("0 of 28,002 discharges differ", done.stdout)
+        self.assertIn("(0.1412)", done.stdout)
+        self.assertIn("(0.1570 of true readmissions)", done.stdout)
 
 
 if __name__ == "__main__":

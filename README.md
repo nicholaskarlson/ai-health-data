@@ -83,9 +83,10 @@ Labs arrive with the chapters. Each has the same five parts as its chapter: the 
 
 | Lab | Question | Status |
 | --- | --- | --- |
+| `ch02_a_hospital_where_the_truth_is_known` | Why should anyone trust results from a made-up hospital? | Ready |
 | `ch06_protocol_first` | Before anyone looks at results: what will we measure, and on whom? | Ready |
 | `ch07_does_it_perform_as_claimed` | The vendor claims 0.84. What does the score do on our patients? | Ready |
-| Chapters 1 to 5 and 8 to 16 | See `BOOK_OUTLINE.md` | To come |
+| Chapters 1, 3 to 5 and 8 to 16 | See `BOOK_OUTLINE.md` | To come |
 
 ## How this was made, and what that means
 
